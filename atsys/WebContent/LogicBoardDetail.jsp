@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
@@ -255,11 +256,10 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
-				<a href="LogicBoardDelete?id=${requestScope.logicBoard.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
+				<a href="LogicBoardDeleteProcess?id=${requestScope.logicBoard.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li><a href="LogicBoard">Logic Board List</a></li>
+					<li class="active">Logic Board ${requestScope.logicBoard.id} Detail</li>
 				</ol>
 			</div>
 			
@@ -277,11 +277,9 @@
 
 						<div>
 
-							<img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
 							<div class="heading-block noborder">
 								<h3>${requestScope.logicBoard.name}</h3>
-								<span>Your Profile Bio</span>
+								<span>${requestScope.logicBoard.address}</span>
 							</div>
 
 							<div class="clear"></div>
@@ -293,7 +291,7 @@
 									<div class="tabs tabs-alt clearfix" id="tabs-profile">
 
 										<ul class="tab-nav clearfix">
-											<li><a href="#tab-feeds"><i class="icon-desktop"></i> General</a></li>
+											<li><a href="#tab-feeds"><i class="icon-line-paper-stack"></i> General</a></li>
 										</ul>
 
 										<div class="tab-container">
@@ -312,16 +310,26 @@
 														  <td>${requestScope.logicBoard.id}</td>
 														</tr>
 														<tr>
-														  <td>Address</td>
+														  <td>Name</td>
+														  <td>${requestScope.logicBoard.name}</td>
+														</tr>
+														<tr>
+														  <td>IP Address</td>
 														  <td>${requestScope.logicBoard.address}</td>
 														</tr>
 														<tr>
-														  <td>User ID</td>
-														  <td>${requestScope.logicBoard.user.id}</td>
+														  <td>User</td>
+														  <td><a href="UserDetail?id=${requestScope.logicBoard.user.id}" style="text-decoration: underline !important;">${requestScope.logicBoard.user.name}</a></td>
 														</tr>
 														<tr>
 														  <td>Connection Status</td>
-														  <td>${requestScope.logicBoard.connectionStatus}</td>
+														  <c:forEach items="${connectionStatusList}" var="connectionStatus">
+															  <c:choose>
+																  <c:when test="${fn:containsIgnoreCase(connectionStatus, requestScope.logicBoard.connectionStatus)}">
+																	  <td>${connectionStatus}</td>
+																  </c:when>
+															  </c:choose>
+												  		  </c:forEach>
 														</tr>
 													  </tbody>
 													</table>

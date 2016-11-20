@@ -8,8 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import utils.AtsysDefaultUtil;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class DoorLock
@@ -31,8 +30,16 @@ public class DoorLock extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-    	AtsysDefaultUtil.validateLogin(request, response);
+		HttpSession session = request.getSession();
 		
+		if (session.getAttribute("user") == null) {
+			
+			response.sendRedirect("Login");
+			return;
+			
+		}
+		
+		request.setAttribute("ticketList", new dao.Ticket().list());
 		request.setAttribute("logicBoardList", new dao.LogicBoard().list());
 		request.setAttribute("doorLockList", new dao.DoorLock().list());
 		RequestDispatcher view = request.getRequestDispatcher("/DoorLock.jsp");

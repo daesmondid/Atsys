@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -280,9 +281,7 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li class="active">User List</li>
 				</ol>
 			</div>
 			
@@ -303,16 +302,16 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Username</th>
-									<th>Password</th>
+									<th>Email</th>
+									<th>User Type</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Username</th>
-									<th>Password</th>
+									<th>Email</th>
+									<th>User Type</th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -320,8 +319,14 @@
 								<tr onclick="document.location='UserDetail?id=<c:out value="${user.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${user.id}"></c:out></td>
 									<td><c:out value="${user.name}"></c:out></td>
-									<td><c:out value="${user.username}"></c:out></td>
-									<td><c:out value="${user.password}"></c:out></td>
+									<td><c:out value="${user.email}"></c:out></td>
+									<c:forEach items="${userTypeList}" var="userType">
+										<c:choose>
+											<c:when test="${fn:containsIgnoreCase(userType, user.userType)}">
+												<td><c:out value="${userType}"></c:out></td>
+											</c:when>
+										</c:choose>
+							  		</c:forEach>
 								</tr>
 							</c:forEach>
 							</tbody>

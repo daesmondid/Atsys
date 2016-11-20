@@ -1,12 +1,9 @@
 package utils;
 
-import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Random;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import enumerations.ConnectionStatus;
 import enumerations.DoorStatus;
@@ -240,16 +237,38 @@ public final class AtsysDefaultUtil {
 		
 	}
 	
-	public static void validateLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public static String passwordHash(String password) {
 		
-		HttpSession session = request.getSession();
+		StringBuffer result = new StringBuffer();
 		
-		if (session.getAttribute("user") == null) {
+		try {
 			
-			response.sendRedirect("Login");
-			return;
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			md.update(password.getBytes());
+		    for (byte byt : md.digest()) result.append(Integer.toString((byt &0xff) + 0x100, 16).substring(1));
+		    
+		}
+		catch (NoSuchAlgorithmException e) {
+			
+			e.printStackTrace();
 			
 		}
+		
+	    return result.toString();
+		
+	}
+	
+	public static String passwordProtect(String password) {
+		
+		String result = password;
+		
+		for (int i = 0; i < 12; i++) {
+			
+			result = passwordHash(result);
+			
+		}
+		
+		return result;
 		
 	}
 

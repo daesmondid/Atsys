@@ -249,9 +249,8 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li>Devices</li>
+					<li class="active">Lighting Device List</li>
 				</ol>
 			</div>
 			
@@ -272,20 +271,16 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Intensity</th>
 									<th>Device ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Intensity</th>
 									<th>Device ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -293,10 +288,8 @@
 								<tr onclick="document.location='LightingDetail?id=<c:out value="${lighting.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${lighting.id}"></c:out></td>
 									<td><c:out value="${lighting.name}"></c:out></td>
-									<td><c:out value="${lighting.intensity}"></c:out></td>
 									<td><c:out value="${lighting.deviceId}"></c:out></td>
-									<td><c:out value="${lighting.logicBoard.id}"></c:out></td>
-									<td><c:out value="${lighting.pin}"></c:out></td>
+									<td><c:out value="${lighting.logicBoard.user.name}"></c:out></td>
 								</tr>
 							</c:forEach>
 							</tbody>

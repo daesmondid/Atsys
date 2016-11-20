@@ -8,15 +8,6 @@ public class Message {
 	private Ticket ticket;
 	private User user;
 	
-	public Message(String content, Ticket ticket, User user) {
-		super();
-		this.id = -1;
-		this.content = content;
-		this.timestamp = "N/A";
-		this.ticket = ticket;
-		this.user = user;
-	}
-
 	public Message(int id, String content, String timestamp, Ticket ticket, User user) {
 		super();
 		this.id = id;

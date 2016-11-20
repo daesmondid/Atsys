@@ -44,6 +44,7 @@ public class UserDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		request.setAttribute("ticketStatusList", AtsysDefaultUtil.getStringTicketStatusMap().keySet());
 		request.setAttribute("userTypeList", AtsysDefaultUtil.getStringUserTypeMap().keySet());
 		request.setAttribute("user", new dao.User().get(id));
 		request.setAttribute("ticketList", new dao.Ticket().list());

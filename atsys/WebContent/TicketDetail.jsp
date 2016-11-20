@@ -277,11 +277,10 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
-				<a href="TicketDelete?id=${requestScope.ticket.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
+				<a href="TicketDeleteProcess?id=${requestScope.ticket.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li><a href="Ticket">Ticket List</a></li>
+					<li class="active">Ticket ${requestScope.ticket.id} Detail</li>
 				</ol>
 			</div>
 			
@@ -299,11 +298,15 @@
 
 						<div>
 
-							<img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
 							<div class="heading-block noborder">
 								<h3>${requestScope.ticket.name}</h3>
-								<span>Your Profile Bio</span>
+								<c:forEach items="${ticketStatusList}" var="ticketStatus">
+								  <c:choose>
+									  <c:when test="${fn:containsIgnoreCase(ticketStatus, requestScope.ticket.ticketStatus)}">
+										  <span>${ticketStatus}</span>
+									  </c:when>
+								  </c:choose>
+						  	    </c:forEach>
 							</div>
 
 							<div class="clear"></div>
@@ -315,8 +318,8 @@
 									<div class="tabs tabs-alt clearfix" id="tabs-profile">
 
 										<ul class="tab-nav clearfix">
-											<li><a href="#tab-feeds"><i class="icon-desktop"></i> General</a></li>
-											<li><a href="#tab-replies"><i class="icon-line-paper"></i> Messages</a></li>
+											<li><a href="#tab-feeds"><i class="icon-line-paper"></i> General</a></li>
+											<li><a href="#tab-replies"><i class="icon-line-speech-bubble"></i> Messages</a></li>
 										</ul>
 
 										<div class="tab-container">
@@ -335,16 +338,26 @@
 														  <td>${requestScope.ticket.id}</td>
 														</tr>
 														<tr>
-														  <td>Device ID</td>
-														  <td>${requestScope.ticket.deviceId}</td>
-														</tr>
-														<tr>
-														  <td>User ID</td>
-														  <td>${requestScope.ticket.user.id}</td>
+														  <td>Subject</td>
+														  <td>${requestScope.ticket.name}</td>
 														</tr>
 														<tr>
 														  <td>Ticket Status</td>
-														  <td>ticketStatus</td>
+														  <c:forEach items="${ticketStatusList}" var="ticketStatus">
+															<c:choose>
+																<c:when test="${fn:containsIgnoreCase(ticketStatus, requestScope.ticket.ticketStatus)}">
+																	<td>${ticketStatus}</td>
+																</c:when>
+															</c:choose>
+													  	  </c:forEach>
+														</tr>
+														<tr>
+														  <td>User</td>
+														  <td><a href="UserDetail?id=${requestScope.ticket.user.id}" style="text-decoration: underline !important;">${requestScope.ticket.user.name}</a></td>
+														</tr>
+														<tr>
+														  <td>Related Device ID</td>
+														  <td>${requestScope.ticket.deviceId}</td>
 														</tr>
 													  </tbody>
 													</table>
@@ -356,24 +369,97 @@
 												<div class="clear topmargin-sm"></div>
 												<ol class="commentlist noborder nomargin nopadding clearfix">
 												<c:forEach items="${messageList}" var="message">
-													<li class="comment even thread-even depth-1" id="li-comment-1">
-														<div id="comment-1" class="comment-wrap clearfix">
-															<div class="comment-meta">
-																<div class="comment-author vcard">
-																	<span class="comment-avatar clearfix">
-																	<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
+													<c:choose>	
+														<c:when test="${message.ticket.id == requestScope.ticket.id}">
+															<li class="comment even thread-even depth-1" id="li-comment-1">
+																<div id="comment-1" class="comment-wrap clearfix">
+																	<div class="comment-meta">
+																		<div class="comment-author vcard">
+																			<span class="comment-avatar clearfix">
+																			<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
+																		</div>
+																	</div>
+																	<div class="comment-content clearfix">
+																		<div class="comment-author"><c:out value="${message.user.name}"></c:out><span><c:out value="${message.timestamp}"></c:out></span></div>
+																		<p><c:out value="${message.content}"></c:out></p>
+																	</div>
+																	<div class="clear"></div>
 																</div>
-															</div>
-															<div class="comment-content clearfix">
-																<div class="comment-author"><c:out value="${message.user.id}"></c:out><span><a href="#" title="Permalink to this comment"><c:out value="${message.timestamp}"></c:out></a></span></div>
-																<p><c:out value="${message.content}"></c:out></p>
-															</div>
-															<div class="clear"></div>
-														</div>
-													</li>
-													</c:forEach>
+															</li>
+														</c:when>
+													</c:choose>
+												</c:forEach>
 
 												</ol>
+												<!-- Modal Contact Form
+												============================================= -->
+												<a href="#" data-toggle="modal" data-target="#contactFormModalMessage" class="button btn-block button-rounded topmargin center" style="margin-right: 5px !important;">New Message</a>
+								
+												<div class="modal fade" id="contactFormModalMessage" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																<h4 class="modal-title" id="contactFormModalLabel">Compose</h4>
+															</div>
+															<div class="modal-body">
+								
+																<div class="contact-widget">
+																	<div class="contact-form-result"></div>
+																	<form class="nobottommargin" id="template-contactform" name="template-contactform" action="MessageAddProcess?id=${requestScope.ticket.id}" method="post">
+								
+																		<div class="form-process"></div>
+																		
+																		<input type="hidden" name="name" value="${requestScope.ticket.name}">
+																		<input type="hidden" name="deviceId" value="${requestScope.ticket.deviceId}">
+								
+																		<div class="col_full">
+																			<label for="template-contactform-status">Ticket Status <small>*</small></label>
+																			<select id="template-contactform-status" name="ticketStatus" class="required sm-form-control" style="height: 40px;">
+																				<option value="">-- Select One --</option>
+																				<c:forEach items="${ticketStatusList}" var="ticketStatus">
+																					<c:choose>
+																						<c:when test="${fn:containsIgnoreCase(ticketStatus, requestScope.ticket.ticketStatus)}">
+																							<option value="${ticketStatus}" selected>${ticketStatus}</option>
+																						</c:when>
+																						<c:otherwise>
+																							<option value="${ticketStatus}">${ticketStatus}</option>
+																						</c:otherwise>
+																					</c:choose>
+																		  		</c:forEach>
+																			</select>
+																		</div>
+								
+																		<div class="clear"></div>
+																		
+																		<div class="col_full">
+																			<label for="template-contactform-content">Message <small>*</small></label>
+																			<textarea class="required sm-form-control" id="template-contactform-content" name="content" rows="6" cols="30"></textarea>
+																		</div>
+																		
+																		<div class="clear"></div>
+								
+																		<div class="col_full hidden">
+																			<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+																		</div>
+								
+																		<div class="col_full">
+																			<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send</button>
+																		</div>
+								
+																	</form>
+								
+																</div>
+								
+								
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+															</div>
+														</div><!-- /.modal-content -->
+													</div><!-- /.modal-dialog -->
+												</div><!-- /.modal -->
+												<!-- Modal Contact Form End -->
 
 											</div>
 

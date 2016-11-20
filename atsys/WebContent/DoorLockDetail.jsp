@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -257,9 +258,9 @@
 				<!-- Modal Contact Form End -->
 				<a href="DoorLockDeleteProcess?id=${requestScope.doorLock.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li>Devices</li>
+					<li><a href="DoorLock">Door Lock Device List</a></li>
+					<li class="active">Door Lock Device ${requestScope.doorLock.id} Detail</li>
 				</ol>
 			</div>
 			
@@ -277,11 +278,9 @@
 
 						<div>
 
-							<img src="images/icons/avatar.jpg" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
 							<div class="heading-block noborder">
 								<h3>${requestScope.doorLock.name}</h3>
-								<span>Your Profile Bio</span>
+								<span>${requestScope.doorLock.logicBoard.user.name}</span>
 							</div>
 
 							<div class="clear"></div>
@@ -293,8 +292,8 @@
 									<div class="tabs tabs-alt clearfix" id="tabs-profile">
 
 										<ul class="tab-nav clearfix">
-											<li><a href="#tab-feeds"><i class="icon-desktop"></i> General</a></li>
-											<li><a href="#tab-posts"><i class="icon-phone3"></i> Board</a></li>
+											<li><a href="#tab-feeds"><i class="icon-line2-lock"></i> General</a></li>
+											<li><a href="#tab-posts"><i class="icon-line-paper-stack"></i> Board</a></li>
 											<li><a href="#tab-replies"><i class="icon-line-paper"></i> Tickets</a></li>
 										</ul>
 
@@ -310,7 +309,7 @@
 													  </colgroup>
 													  <tbody>
 														<tr>
-														  <td>ID</td>
+														  <td>Door Lock ID</td>
 														  <td>${requestScope.doorLock.id}</td>
 														</tr>
 														<tr>
@@ -318,16 +317,12 @@
 														  <td>${requestScope.doorLock.deviceId}</td>
 														</tr>
 														<tr>
-														  <td>Logic Board ID</td>
-														  <td>${requestScope.doorLock.logicBoard.id}</td>
+														  <td>Name</td>
+														  <td>${requestScope.doorLock.name}</td>
 														</tr>
 														<tr>
-														  <td>Logic Board Pin</td>
-														  <td>${requestScope.doorLock.pin}</td>
-														</tr>
-														<tr>
-														  <td>Lock Status</td>
-														  <td>${requestScope.doorLock.lockStatus}</td>
+														  <td>User</td>
+														  <td><a href="UserDetail?id=${requestScope.doorLock.logicBoard.user.id}" style="text-decoration: underline !important;">${requestScope.doorLock.logicBoard.user.name}</a></td>
 														</tr>
 													  </tbody>
 													</table>
@@ -345,23 +340,29 @@
 													  <tbody>
 														<tr>
 														  <td>Board ID</td>
-														  <td>3</td>
+														  <td>${requestScope.doorLock.logicBoard.id}</td>
 														</tr>
 														<tr>
 														  <td>Board Name</td>
-														  <td>Board 01</td>
+														  <td>${requestScope.doorLock.logicBoard.name}</td>
 														</tr>
 														<tr>
-														  <td>IP Address</td>
-														  <td>192.168.11.1</td>
+														  <td>Board IP Address</td>
+														  <td>${requestScope.doorLock.logicBoard.address}</td>
 														</tr>
 														<tr>
-														  <td>User</td>
-														  <td><a href="#">Leonardo Kurnia</a></td>
+														  <td>Device Pin Array</td>
+														  <td>${requestScope.doorLock.pin}</td>
 														</tr>
 														<tr>
 														  <td>Connection Status</td>
-														  <td>+62215872480</td>
+														  <c:forEach items="${connectionStatusList}" var="connectionStatus">
+															  <c:choose>
+																  <c:when test="${fn:containsIgnoreCase(connectionStatus, requestScope.doorLock.logicBoard.connectionStatus)}">
+																	  <td>${connectionStatus}</td>
+																  </c:when>
+															  </c:choose>
+												  		  </c:forEach>
 														</tr>
 													  </tbody>
 													</table>
@@ -376,30 +377,37 @@
 														<thead>
 															<tr>
 																<th>ID</th>
-																<th>Device ID</th>
-																<th>Name</th>
-																<th>User ID</th>
+																<th>Subject</th>
 																<th>Ticket Status</th>
+																<th>User</th>
 															</tr>
 														</thead>
 														<tfoot>
 															<tr>
 																<th>ID</th>
-																<th>Device ID</th>
-																<th>Name</th>
-																<th>User ID</th>
+																<th>Subject</th>
 																<th>Ticket Status</th>
+																<th>User</th>
 															</tr>
 														</tfoot>
 														<tbody>
 														<c:forEach items="${ticketList}" var="ticket">
-															<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${ticket.id}"></c:out></td>
-																<td><c:out value="${ticket.deviceId}"></c:out></td>
-																<td><c:out value="${ticket.name}"></c:out></td>
-																<td><c:out value="${ticket.user.id}"></c:out></td>
-																<td><c:out value="${ticket.ticketStatus}"></c:out></td>
-															</tr>
+															<c:choose>
+																<c:when test="${ticket.deviceId == requestScope.doorLock.deviceId}">
+																	<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
+																		<td><c:out value="${ticket.id}"></c:out></td>
+																		<td><c:out value="${ticket.name}"></c:out></td>
+																		<c:forEach items="${ticketStatusList}" var="ticketStatus">
+																			<c:choose>
+																				<c:when test="${fn:containsIgnoreCase(ticketStatus, ticket.ticketStatus)}">
+																					<td><c:out value="${ticketStatus}"></c:out></td>
+																				</c:when>
+																			</c:choose>
+																  		</c:forEach>
+																  		<td><c:out value="${ticket.user.name}"></c:out></td>
+																	</tr>
+																</c:when>
+															</c:choose>
 														</c:forEach>
 														</tbody>
 													</table>

@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import enumerations.UserType;
 import utils.AtsysDefaultUtil;
@@ -30,7 +31,14 @@ public class UserAddProcess extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		AtsysDefaultUtil.validateLogin(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("user") == null) {
+			
+			response.sendRedirect("Login");
+			return;
+			
+		}
 		
 		int id = AtsysDefaultUtil.getSaltInt();
 		String name = request.getParameter("name");
@@ -44,6 +52,8 @@ public class UserAddProcess extends HttpServlet {
 		String homePhone = request.getParameter("homePhone");
 		
 		if (password.equals(passwordver)) {
+			
+			password = AtsysDefaultUtil.passwordProtect(password);
 			
 			if (new dao.User().countUserMatch(username, password) == 1) {
 				

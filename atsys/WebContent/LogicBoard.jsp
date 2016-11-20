@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -249,9 +250,7 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li class="active">Logic Board List</li>
 				</ol>
 			</div>
 			
@@ -272,8 +271,7 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Address</th>
-									<th>User ID</th>
+									<th>User</th>
 									<th>Connection Status</th>
 								</tr>
 							</thead>
@@ -281,8 +279,7 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Address</th>
-									<th>User ID</th>
+									<th>User</th>
 									<th>Connection Status</th>
 								</tr>
 							</tfoot>
@@ -291,9 +288,14 @@
 								<tr onclick="document.location='LogicBoardDetail?id=<c:out value="${logicBoard.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${logicBoard.id}"></c:out></td>
 									<td><c:out value="${logicBoard.name}"></c:out></td>
-									<td><c:out value="${logicBoard.address}"></c:out></td>
-									<td><c:out value="${logicBoard.user.id}"></c:out></td>
-									<td><c:out value="${logicBoard.connectionStatus}"></c:out></td>
+									<td><c:out value="${logicBoard.user.name}"></c:out></td>
+									<c:forEach items="${connectionStatusList}" var="connectionStatus">
+										<c:choose>
+											<c:when test="${fn:containsIgnoreCase(connectionStatus, logicBoard.connectionStatus)}">
+												<td><c:out value="${connectionStatus}"></c:out></td>
+											</c:when>
+										</c:choose>
+							  		</c:forEach>
 								</tr>
 							</c:forEach>
 							</tbody>

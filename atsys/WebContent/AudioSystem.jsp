@@ -249,9 +249,8 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li>Devices</li>
+					<li class="active">Audio System Device List</li>
 				</ol>
 			</div>
 			
@@ -272,24 +271,16 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Power Status</th>
 									<th>Device ID</th>
-									<th>Volume Level</th>
-									<th>Music ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Power Status</th>
 									<th>Device ID</th>
-									<th>Volume Level</th>
-									<th>Music ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -297,12 +288,8 @@
 								<tr onclick="document.location='AudioSystemDetail?id=<c:out value="${audioSystem.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${audioSystem.id}"></c:out></td>
 									<td><c:out value="${audioSystem.name}"></c:out></td>
-									<td><c:out value="${audioSystem.powerStatus}"></c:out></td>
 									<td><c:out value="${audioSystem.deviceId}"></c:out></td>
-									<td><c:out value="${audioSystem.volumeLevel}"></c:out></td>
-									<td><c:out value="${audioSystem.musicId}"></c:out></td>
-									<td><c:out value="${audioSystem.logicBoard.id}"></c:out></td>
-									<td><c:out value="${audioSystem.pin}"></c:out></td>
+									<td><c:out value="${audioSystem.logicBoard.user.name}"></c:out></td>
 								</tr>
 							</c:forEach>
 							</tbody>

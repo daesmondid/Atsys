@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import utils.AtsysDefaultUtil;
 
@@ -31,8 +32,16 @@ public class LogicBoard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AtsysDefaultUtil.validateLogin(request, response);
+		HttpSession session = request.getSession();
 		
+		if (session.getAttribute("user") == null) {
+			
+			response.sendRedirect("Login");
+			return;
+			
+		}
+		
+		request.setAttribute("ticketList", new dao.Ticket().list());
 		request.setAttribute("connectionStatusList", AtsysDefaultUtil.getStringConnectionStatusMap().keySet());
 		request.setAttribute("userList", new dao.User().list());
 		request.setAttribute("logicBoardList", new dao.LogicBoard().list());

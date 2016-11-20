@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import utils.AtsysDefaultUtil;
+
 /**
  * Servlet implementation class AudioSystemDetail
  */
@@ -42,6 +44,8 @@ public class AudioSystemDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		request.setAttribute("connectionStatusList", AtsysDefaultUtil.getStringConnectionStatusMap().keySet());
+		request.setAttribute("ticketStatusList", AtsysDefaultUtil.getStringTicketStatusMap().keySet());
 		request.setAttribute("logicBoardList", new dao.LogicBoard().list());
 		request.setAttribute("audioSystem", new dao.AudioSystem().get(id));
 		request.setAttribute("ticketList", new dao.Ticket().list());

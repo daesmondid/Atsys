@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import utils.AtsysDefaultUtil;
+
 /**
  * Servlet implementation class LogicBoardDetail
  */
@@ -42,6 +44,8 @@ public class LogicBoardDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		request.setAttribute("ticketList", new dao.Ticket().list());
+		request.setAttribute("connectionStatusList", AtsysDefaultUtil.getStringConnectionStatusMap().keySet());
 		request.setAttribute("userList", new dao.User().list());
 		request.setAttribute("logicBoard", new dao.LogicBoard().get(id));
 		RequestDispatcher view = request.getRequestDispatcher("/LogicBoardDetail.jsp");

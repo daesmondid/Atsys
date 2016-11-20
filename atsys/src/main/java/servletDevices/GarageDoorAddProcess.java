@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import enumerations.DoorStatus;
 import models.LogicBoard;
@@ -32,7 +33,14 @@ public class GarageDoorAddProcess extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		AtsysDefaultUtil.validateLogin(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("user") == null) {
+			
+			response.sendRedirect("Login");
+			return;
+			
+		}
 		
 		int id = AtsysDefaultUtil.getSaltInt();
 		String name = request.getParameter("name");

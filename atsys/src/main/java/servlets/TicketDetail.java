@@ -44,6 +44,7 @@ public class TicketDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		request.setAttribute("ticketList", new dao.Ticket().list());
 		request.setAttribute("ticketStatusList", AtsysDefaultUtil.getStringTicketStatusMap().keySet());
 		request.setAttribute("deviceList", new dao.Device().list());
 		request.setAttribute("ticket", new dao.Ticket().get(id));

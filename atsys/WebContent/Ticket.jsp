@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -241,6 +242,13 @@
 										  		</c:forEach>
 											</select>
 										</div>
+										
+										<div class="clear"></div>
+										
+										<div class="col_full">
+											<label for="template-contactform-content">Message <small>*</small></label>
+											<textarea class="required sm-form-control" id="template-contactform-content" name="content" rows="6" cols="30"></textarea>
+										</div>
 
 										<div class="clear"></div>
 
@@ -266,9 +274,7 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li class="active">Ticket List</li>
 				</ol>
 			</div>
 			
@@ -288,8 +294,7 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>Device ID</th>
-									<th>Name</th>
+									<th>Subject</th>
 									<th>User ID</th>
 									<th>Ticket Status</th>
 								</tr>
@@ -297,8 +302,7 @@
 							<tfoot>
 								<tr>
 									<th>ID</th>
-									<th>Device ID</th>
-									<th>Name</th>
+									<th>Subject</th>
 									<th>User ID</th>
 									<th>Ticket Status</th>
 								</tr>
@@ -307,10 +311,15 @@
 							<c:forEach items="${ticketList}" var="ticket">
 								<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${ticket.id}"></c:out></td>
-									<td><c:out value="${ticket.deviceId}"></c:out></td>
 									<td><c:out value="${ticket.name}"></c:out></td>
-									<td><c:out value="${ticket.user.id}"></c:out></td>
-									<td><c:out value="${ticket.ticketStatus}"></c:out></td>
+									<td><c:out value="${ticket.user.name}"></c:out></td>
+									<c:forEach items="${ticketStatusList}" var="ticketStatus">
+										<c:choose>
+											<c:when test="${fn:containsIgnoreCase(ticketStatus, ticket.ticketStatus)}">
+												<td><c:out value="${ticketStatus}"></c:out></td>
+											</c:when>
+										</c:choose>
+							  		</c:forEach>
 								</tr>
 							</c:forEach>
 							</tbody>

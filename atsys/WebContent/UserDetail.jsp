@@ -287,11 +287,10 @@
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
-				<a href="UserDelete?id=${requestScope.user.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
+				<a href="UserDeleteProcess?id=${requestScope.user.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li><a href="User">User List</a></li>
+					<li class="active">User ${requestScope.user.id} Detail</li>
 				</ol>
 			</div>
 			
@@ -313,7 +312,13 @@
 
 							<div class="heading-block noborder">
 								<h3>${requestScope.user.name}</h3>
-								<span>Your Profile Bio</span>
+								<c:forEach items="${userTypeList}" var="userType">
+							  	  <c:choose>
+									  <c:when test="${fn:containsIgnoreCase(userType, requestScope.user.userType)}">
+										  <span>${userType}</span>
+									  </c:when>
+								  </c:choose>
+						  	    </c:forEach>
 							</div>
 
 							<div class="clear"></div>
@@ -346,12 +351,22 @@
 														  <td>${requestScope.user.id}</td>
 														</tr>
 														<tr>
+														  <td>Name</td>
+														  <td>${requestScope.user.name}</td>
+														</tr>
+														<tr>
 														  <td>Username</td>
 														  <td>${requestScope.user.username}</td>
 														</tr>
 														<tr>
-														  <td>Password Hash</td>
-														  <td>${requestScope.user.password}</td>
+														  <td>User Type</td>
+														  <c:forEach items="${userTypeList}" var="userType">
+														  	<c:choose>
+																<c:when test="${fn:containsIgnoreCase(userType, requestScope.user.userType)}">
+																	<td>${userType}</td>
+																</c:when>
+															</c:choose>
+													  	  </c:forEach>
 														</tr>
 													  </tbody>
 													</table>
@@ -396,30 +411,34 @@
 														<thead>
 															<tr>
 																<th>ID</th>
-																<th>Device ID</th>
-																<th>Name</th>
-																<th>User ID</th>
+																<th>Subject</th>
 																<th>Ticket Status</th>
 															</tr>
 														</thead>
 														<tfoot>
 															<tr>
 																<th>ID</th>
-																<th>Device ID</th>
-																<th>Name</th>
-																<th>User ID</th>
+																<th>Subject</th>
 																<th>Ticket Status</th>
 															</tr>
 														</tfoot>
 														<tbody>
 														<c:forEach items="${ticketList}" var="ticket">
-															<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${ticket.id}"></c:out></td>
-																<td><c:out value="${ticket.deviceId}"></c:out></td>
-																<td><c:out value="${ticket.name}"></c:out></td>
-																<td><c:out value="${ticket.user.id}"></c:out></td>
-																<td><c:out value="${ticket.ticketStatus}"></c:out></td>
-															</tr>
+															<c:choose>
+																<c:when test="${ticket.user.id == requestScope.user.id}">
+																	<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
+																		<td><c:out value="${ticket.id}"></c:out></td>
+																		<td><c:out value="${ticket.name}"></c:out></td>
+																		<c:forEach items="${ticketStatusList}" var="ticketStatus">
+																			<c:choose>
+																				<c:when test="${fn:containsIgnoreCase(ticketStatus, ticket.ticketStatus)}">
+																					<td><c:out value="${ticketStatus}"></c:out></td>
+																				</c:when>
+																			</c:choose>
+																  		</c:forEach>
+																	</tr>
+																</c:when>
+															</c:choose>
 														</c:forEach>
 														</tbody>
 													</table>

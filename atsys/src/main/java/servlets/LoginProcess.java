@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import enumerations.UserType;
+import utils.AtsysDefaultUtil;
 
 
 /**
@@ -35,6 +36,8 @@ public class LoginProcess extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		
+		password = AtsysDefaultUtil.passwordProtect(password);
 		
 		if (new dao.User().countUserMatch(username, password) == 1) {
 			

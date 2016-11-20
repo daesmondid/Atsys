@@ -6,8 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import utils.AtsysDefaultUtil;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AppliancesDelete
@@ -29,7 +28,14 @@ public class AppliancesDeleteProcess extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AtsysDefaultUtil.validateLogin(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("user") == null) {
+			
+			response.sendRedirect("Login");
+			return;
+			
+		}
 		
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);

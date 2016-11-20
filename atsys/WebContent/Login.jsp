@@ -49,7 +49,7 @@
 					<div class="container vertical-middle divcenter clearfix">
 
 						<div class="row center">
-							<a href="index.html"><img src="images/logo-dark.png" alt="Canvas Logo"></a>
+							<a href="index.html"><img src="images/logo-dark.svg" width="240" alt="Canvas Logo"></a>
 						</div>
 
 						<div class="panel panel-default divcenter noradius noborder" style="max-width: 400px;">
@@ -69,7 +69,7 @@
 
 									<div class="col_full nobottommargin">
 										<button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-										<a href="#" class="fright">Forgot Password?</a>
+										<!--a href="#" class="fright">Forgot Password?</a-->
 									</div>
 								</form>
 

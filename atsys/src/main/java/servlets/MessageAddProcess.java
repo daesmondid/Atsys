@@ -14,16 +14,16 @@ import models.User;
 import utils.AtsysDefaultUtil;
 
 /**
- * Servlet implementation class TicketAddProcess
+ * Servlet implementation class MessageAddProcess
  */
-@WebServlet("/TicketAddProcess")
-public class TicketAddProcess extends HttpServlet {
+@WebServlet("/MessageAddProcess")
+public class MessageAddProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TicketAddProcess() {
+    public MessageAddProcess() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,13 +42,14 @@ public class TicketAddProcess extends HttpServlet {
 			
 		}
 		
-		int id = AtsysDefaultUtil.getSaltInt();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		TicketStatus ticketStatus = AtsysDefaultUtil.getStringTicketStatusMap().get(request.getParameter("ticketStatus"));
-		User user = new dao.User().get(Integer.parseInt(request.getParameter("userId")));
+		User user = null;
 		String deviceId = request.getParameter("deviceId");
 		
-		new dao.Ticket().add(new models.Ticket(id, name, ticketStatus, user, deviceId));
+		new dao.Ticket().edit(new models.Ticket(id, name, ticketStatus, user, deviceId));
 		
 		int messageId = AtsysDefaultUtil.getSaltInt();
 		String content = request.getParameter("content").replaceAll("\n", "<br />");

@@ -15,7 +15,8 @@ public class Message extends DaoBase {
 		try {
 			
 			statement = connect.createStatement();
-	    	statement.executeUpdate("insert into message (user_id, ticket_id, content) values (\""+message.getUser().getId()+"\", \""+message.getTicket().getId()+"\", \""+message.getContent()+"\")");			
+	    	String query = "insert into message (user_id, ticket_id, content) values ("+message.getUser().getId()+", "+message.getTicket().getId()+", '"+message.getContent()+"')";
+	    	statement.executeUpdate(query.replaceAll("'", "\""));
 			
 		}
 		catch (SQLException e) {

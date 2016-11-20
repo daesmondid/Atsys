@@ -11,12 +11,15 @@ public class DaoConnection {
 	protected Statement statement = null;
 	protected ResultSet resultSet = null;
 	
-	final protected String xhost = "128.199.111.126";
-	final protected String xuser = "remoteuser";
-	final protected String xpasswd = "It2014";
+	//final protected String xhost = "128.199.111.126";
+	//final protected String xuser = "remoteuser";
+	//final protected String xpasswd = "It2014";
+	//final protected String xdatabase = "atsys";
+	
+	final protected String xhost = "127.0.0.1";
+	final protected String xuser = "root";
+	final protected String xpasswd = "";
 	final protected String xdatabase = "atsys";
-	
-	
 	
 	public DaoConnection() {
 		

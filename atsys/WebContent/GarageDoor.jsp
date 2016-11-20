@@ -249,9 +249,8 @@
 				</div><!-- /.modal -->
 				<!-- Modal Contact Form End -->
 				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Functionality</a></li>
-					<li class="active">Navigation Tree</li>
+					<li>Devices</li>
+					<li class="active">Garage Door Device List</li>
 				</ol>
 			</div>
 			
@@ -272,31 +271,25 @@
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Door Status</th>
 									<th>Device ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>ID</th>
 									<th>Name</th>
-									<th>Door Status</th>
 									<th>Device ID</th>
-									<th>Logic Board ID</th>
-									<th>Pin</th>
+									<th>User</th>
 								</tr>
 							</tfoot>
 							<tbody>
 							<c:forEach items="${garageDoorList}" var="garageDoor">
 								<tr onclick="document.location='GarageDoorDetail?id=<c:out value="${garageDoor.id}"></c:out>'" style="cursor: pointer;">
 									<td><c:out value="${garageDoor.id}"></c:out></td>
-								<td><c:out value="${garageDoor.name}"></c:out></td>
-								<td><c:out value="${garageDoor.doorStatus}"></c:out></td>
-								<td><c:out value="${garageDoor.deviceId}"></c:out></td>
-								<td><c:out value="${garageDoor.logicBoard.id}"></c:out></td>
-								<td><c:out value="${garageDoor.pin}"></c:out></td>
+									<td><c:out value="${garageDoor.name}"></c:out></td>
+									<td><c:out value="${garageDoor.deviceId}"></c:out></td>
+									<td><c:out value="${garageDoor.logicBoard.user.name}"></c:out></td>
 								</tr>
 							</c:forEach>
 							</tbody>
