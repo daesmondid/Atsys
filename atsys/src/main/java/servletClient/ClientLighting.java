@@ -1,7 +1,6 @@
 package servletClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,21 +42,8 @@ public class ClientLighting extends HttpServlet {
 			
 		}
 		
-		dao.Lighting lightingDao = new dao.Lighting();
-		
-		try {
-			lightingDao.connectToDB();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<models.Lighting> list = new ArrayList<models.Lighting>();
-		
-		list = lightingDao.list();
-		
-		request.setAttribute("user", (User) session.getAttribute("user"));
-		request.setAttribute("list", list);
+		request.setAttribute("sessionUser", (User) session.getAttribute("user"));
+		request.setAttribute("lightingList", new dao.Lighting().list());
 		RequestDispatcher view = request.getRequestDispatcher("/ClientLighting.jsp");
 		view.forward(request, response);
 	}

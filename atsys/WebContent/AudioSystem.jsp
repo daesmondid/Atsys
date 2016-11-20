@@ -238,7 +238,7 @@
 											style="height: 40px;">
 											<option value="">-- Select One --</option>
 											<c:forEach items="${logicBoardList}" var="logicBoard">
-												<option value="${logicBoard.id}">${logicBoard.id}</option>
+												<option value="${logicBoard.id}">${logicBoard.name} (${logicBoard.user.name})</option>
 											</c:forEach>
 										</select>
 									</div>

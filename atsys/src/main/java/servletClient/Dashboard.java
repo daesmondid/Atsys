@@ -42,7 +42,7 @@ public class Dashboard extends HttpServlet {
 			
 		}
 		
-		request.setAttribute("user", (User) session.getAttribute("user"));
+		request.setAttribute("sessionUser", (User) session.getAttribute("user"));
 		RequestDispatcher view = request.getRequestDispatcher("/Dashboard.jsp");
 		view.forward(request, response);
 		

@@ -1,7 +1,6 @@
 package servletClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,21 +42,8 @@ public class ClientDoorLock extends HttpServlet {
 			
 		}
 		
-		dao.DoorLock doorLockDao = new dao.DoorLock();
-		
-		try {
-			doorLockDao.connectToDB();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<models.DoorLock> list = new ArrayList<models.DoorLock>();
-		
-		list = doorLockDao.list();
-		
-		request.setAttribute("user", (User) session.getAttribute("user"));
-		request.setAttribute("list", list);
+		request.setAttribute("sessionUser", (User) session.getAttribute("user"));
+		request.setAttribute("doorLockList", new dao.DoorLock().list());
 		RequestDispatcher view = request.getRequestDispatcher("/ClientDoorLock.jsp");
 		view.forward(request, response);
 	}

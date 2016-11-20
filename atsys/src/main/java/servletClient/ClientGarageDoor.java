@@ -1,7 +1,6 @@
 package servletClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,7 +31,7 @@ public class ClientGarageDoor extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("user") == null) {
@@ -42,21 +41,8 @@ public class ClientGarageDoor extends HttpServlet {
 			
 		}
 		
-		dao.GarageDoor garageDoorDao = new dao.GarageDoor();
-		
-		try {
-			garageDoorDao.connectToDB();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<models.GarageDoor> list = new ArrayList<models.GarageDoor>();
-		
-		list = garageDoorDao.list();
-		
-		request.setAttribute("user", (User) session.getAttribute("user"));
-		request.setAttribute("list", list);
+		request.setAttribute("sessionUser", (User) session.getAttribute("user"));
+		request.setAttribute("garageDoorList", new dao.GarageDoor().list());
 		RequestDispatcher view = request.getRequestDispatcher("/ClientGarageDoor.jsp");
 		view.forward(request, response);
 	}

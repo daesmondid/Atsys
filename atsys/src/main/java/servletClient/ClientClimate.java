@@ -1,7 +1,6 @@
 package servletClient;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,7 +31,7 @@ public class ClientClimate extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("user") == null) {
@@ -42,21 +41,8 @@ public class ClientClimate extends HttpServlet {
 			
 		}
 		
-		dao.Climate climateDao = new dao.Climate();
-		
-		try {
-			climateDao.connectToDB();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<models.Climate> list = new ArrayList<models.Climate>();
-		
-		list = climateDao.list();
-		
-		request.setAttribute("user", (User) session.getAttribute("user"));
-		request.setAttribute("list", list);
+		request.setAttribute("sessionUser", (User) session.getAttribute("user"));
+		request.setAttribute("climateList", new dao.Climate().list());
 		RequestDispatcher view = request.getRequestDispatcher("/ClientClimate.jsp");
 		view.forward(request, response);
 	}
