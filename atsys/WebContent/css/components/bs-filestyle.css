@@ -17,14 +17,12 @@
 	font-size: 999px;
 	text-align: right;
 	color: #fff;
-	background: transparent url('../../images/preloader.gif') top left
-		no-repeat;
+	background: transparent url('../../images/preloader.gif') top left no-repeat;
 	border: none;
 }
 
-.fileinput-upload.btn, .btn-file.btn {
-	padding-bottom: 5px;
-}
+.fileinput-upload.btn,
+.btn-file.btn { padding-bottom: 5px; }
 
 .file-object {
 	margin: 0 0 -5px 0;
@@ -41,13 +39,9 @@
 	top: 2px;
 }
 
-.btn-file i ~ span {
-	margin-left: 2px;
-}
+.btn-file i ~ span { margin-left: 2px; }
 
-.icon-file-alt.kv-caption-icon {
-	margin-right: 5px;
-}
+.icon-file-alt.kv-caption-icon { margin-right: 5px; }
 
 .btn-file input[type=file] {
 	position: absolute;
@@ -69,13 +63,9 @@
 	word-break: break-all;
 }
 
-.input-group-lg .file-caption-name {
-	height: 25px;
-}
+.input-group-lg .file-caption-name { height: 25px; }
 
-.file-preview-detail-modal {
-	text-align: left;
-}
+.file-preview-detail-modal { text-align: left; }
 
 .file-error-message {
 	background-color: #f2dede;
@@ -116,9 +106,7 @@
 	vertical-align: middle;
 }
 
-.file-preview-frame:not (.file-preview-error ):hover {
-	box-shadow: 3px 3px 5px 0 #333;
-}
+.file-preview-frame:not(.file-preview-error):hover { box-shadow: 3px 3px 5px 0 #333; }
 
 .file-preview-image {
 	height: 160px;
@@ -145,41 +133,20 @@
 	opacity: 0.8;
 }
 
-.file-actions, .file-other-error {
-	text-align: left;
-}
-
-.file-icon-lg {
-	font-size: 1.2em;
-}
-
-.file-icon-2x {
-	font-size: 2.4em;
-}
-
-.file-icon-4x {
-	font-size: 4.8em;
-}
+.file-actions, .file-other-error { text-align: left; }
+.file-icon-lg { font-size: 1.2em; }
+.file-icon-2x { font-size: 2.4em; }
+.file-icon-4x { font-size: 4.8em; }
 
 .file-input-new .file-preview, .file-input-new .close, .file-input-new .glyphicon-file,
-	.file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
-	.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button
-	{
-	display: none;
-}
+.file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
+.file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button { display: none; }
 
-.file-thumb-loading {
-	background: transparent url('../../images/preloader.gif') no-repeat
-		scroll center center content-box !important;
-}
+.file-thumb-loading { background: transparent url('../../images/preloader.gif') no-repeat scroll center center content-box !important; }
 
-.file-actions {
-	margin-top: 15px;
-}
+.file-actions { margin-top: 15px; }
 
-.file-footer-buttons {
-	float: right;
-}
+.file-footer-buttons { float: right; }
 
 .file-upload-indicator {
 	padding-top: 2px;
@@ -211,10 +178,7 @@
 	box-shadow: none;
 }
 
-.file-preview-frame:not (.file-preview-error ) .file-footer-caption:hover
-	{
-	color: #000;
-}
+.file-preview-frame:not(.file-preview-error) .file-footer-caption:hover { color: #000; }
 
 .file-drop-zone {
 	border: 1px dashed #aaa;
@@ -242,9 +206,7 @@
 	opacity: 0.65;
 }
 
-.file-error-message .close {
-	margin-top: 5px;
-}
+.file-error-message .close { margin-top: 5px; }
 
 .file-thumb-progress .progress, .file-thumb-progress .progress-bar {
 	height: 10px;
@@ -252,9 +214,7 @@
 	line-height: 10px;
 }
 
-.file-thumbnail-footer {
-	position: relative;
-}
+.file-thumbnail-footer { position: relative; }
 
 .file-thumb-progress {
 	position: absolute;
@@ -265,6 +225,6 @@
 
 /* IE 10 fix */
 .btn-file ::-ms-browse {
-	width: 100%;
-	height: 100%;
+	width:100%;
+	height:100%;
 }

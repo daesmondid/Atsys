@@ -1,15 +1,16 @@
+
 /*-----------------------------------------------------------------------------------
 
     Shortcodes: countdown.css
 
 -----------------------------------------------------------------------------------*/
 
+
 /* ----------------------------------------------------------------
 	Countdown
 -----------------------------------------------------------------*/
-.countdown {
-	display: block;
-}
+
+.countdown { display: block; }
 
 .countdown-row {
 	display: block;
@@ -28,9 +29,7 @@
 	text-transform: capitalize;
 }
 
-.countdown-section:first-child {
-	border-left: 0;
-}
+.countdown-section:first-child { border-left: 0; }
 
 .countdown-amount {
 	display: block;
@@ -44,22 +43,22 @@
 	width: 100%;
 }
 
+
 /* Countdown - Medium
 -----------------------------------------------------------------*/
-.countdown-medium .countdown-section {
-	font-size: 14px;
-}
+
+.countdown-medium .countdown-section { font-size: 14px; }
 
 .countdown-medium .countdown-amount {
 	font-size: 30px;
 	margin-bottom: 7px;
 }
 
+
 /* Countdown - Large
 -----------------------------------------------------------------*/
-.countdown-large .countdown-section {
-	font-size: 18px;
-}
+
+.countdown-large .countdown-section { font-size: 18px; }
 
 .countdown-large .countdown-amount {
 	font-size: 44px;
@@ -67,11 +66,11 @@
 	margin-bottom: 8px;
 }
 
+
 /* Countdown - Inline
 -----------------------------------------------------------------*/
-.countdown.countdown-inline {
-	display: inline-block;
-}
+
+.countdown.countdown-inline { display: inline-block; }
 
 .countdown.countdown-inline .countdown-row {
 	display: inline-block;
@@ -89,9 +88,7 @@
 	text-transform: inherit;
 }
 
-.countdown.countdown-inline .countdown-section:first-child {
-	margin-left: 0;
-}
+.countdown.countdown-inline .countdown-section:first-child { margin-left: 0; }
 
 .countdown.countdown-inline .countdown-amount {
 	display: inline-block;
@@ -106,19 +103,19 @@
 	width: auto;
 }
 
+
 /* Countdown - Coming Soon
 -----------------------------------------------------------------*/
-body:not (.device-xs ):not (.device-xxs ) .countdown.countdown-large.coming-soon .countdown-section
-	{
+
+body:not(.device-xs):not(.device-xxs) .countdown.countdown-large.coming-soon .countdown-section {
 	border: none;
 	padding: 15px;
 }
 
-body:not (.device-xs ):not (.device-xxs ) .countdown.countdown-large.coming-soon .countdown-amount
-	{
+body:not(.device-xs):not(.device-xxs) .countdown.countdown-large.coming-soon .countdown-amount {
 	height: 140px;
 	line-height: 140px;
 	border-radius: 50%;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0,0,0,0.2);
 	margin-bottom: 15px !important;
 }

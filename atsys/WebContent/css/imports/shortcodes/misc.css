@@ -1,12 +1,16 @@
+
 /*-----------------------------------------------------------------------------------
 
     Shortcodes: misc.css
 
 -----------------------------------------------------------------------------------*/
 
+
 /* Infinity Scroll - Message Style
 -----------------------------------------------------------------*/
-#infscr-loading, #portfolio-ajax-loader {
+
+#infscr-loading,
+#portfolio-ajax-loader {
 	position: fixed;
 	z-index: 20;
 	top: 50%;
@@ -14,7 +18,7 @@
 	width: 48px;
 	height: 48px;
 	margin: -24px 0 0 -24px;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0,0,0,0.7);
 	border-radius: 3px;
 	line-height: 48px;
 	font-size: 24px;
@@ -22,24 +26,23 @@
 	text-align: center;
 }
 
-#infscr-loading img, #portfolio-ajax-loader img {
+#infscr-loading img,
+#portfolio-ajax-loader img {
 	display: none;
 	width: 24px;
 	height: 24px;
 	margin: 12px;
 }
 
-#portfolio-ajax-loader {
-	display: none;
-}
+#portfolio-ajax-loader { display: none; }
 
-#portfolio-ajax-loader img {
-	display: block;
-}
+#portfolio-ajax-loader img { display: block; }
+
 
 /* ----------------------------------------------------------------
 	Forms
 -----------------------------------------------------------------*/
+
 .sm-form-control {
 	display: block;
 	width: 100%;
@@ -69,30 +72,23 @@
 	opacity: 1;
 }
 
-.sm-form-control:-ms-input-placeholder {
-	color: #999;
+.sm-form-control:-ms-input-placeholder { color: #999; }
+.sm-form-control::-webkit-input-placeholder { color: #999; }
+
+.sm-form-control[disabled],
+.sm-form-control[readonly],
+fieldset[disabled] .sm-form-control {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
 }
 
-.sm-form-control::-webkit-input-placeholder {
-	color: #999;
-}
+.sm-form-control { height: auto; }
 
-.sm-form-control[disabled], .sm-form-control[readonly], fieldset[disabled] .sm-form-control
-	{
-	cursor: not-allowed;
-	background-color: #eeeeee;
-	opacity: 1;
-}
+.form-control { border-radius: 3px; }
 
-.sm-form-control {
-	height: auto;
-}
-
-.form-control {
-	border-radius: 3px;
-}
-
-.form-control:active, .form-control:focus {
+.form-control:active,
+.form-control:focus {
 	border-color: #999;
 	box-shadow: none;
 }
@@ -115,17 +111,27 @@ label.label-muted {
 	margin-right: 5px;
 }
 
-form .col_full, form .col_half, form .col_one_third, form .col_two_third,
-	form .col_three_fourth, form .col_one_fourth, form .col_one_fifth, form .col_two_fifth,
-	form .col_three_fifth, form .col_four_fifth, form .col_one_sixth, form .col_five_sixth
-	{
-	margin-bottom: 25px;
-}
+form .col_full,
+form .col_half,
+form .col_one_third,
+form .col_two_third,
+form .col_three_fourth,
+form .col_one_fourth,
+form .col_one_fifth,
+form .col_two_fifth,
+form .col_three_fifth,
+form .col_four_fifth,
+form .col_one_sixth,
+form .col_five_sixth { margin-bottom: 25px; }
+
 
 /* ----------------------------------------------------------------
 	Contact Form
 -----------------------------------------------------------------*/
-#contact-form-overlay, #contact-form-overlay-mini {
+
+
+#contact-form-overlay,
+#contact-form-overlay-mini {
 	position: relative;
 	max-width: 800px;
 	background-color: #FFF;
@@ -133,7 +139,7 @@ form .col_full, form .col_half, form .col_one_third, form .col_two_third,
 	margin: 0 auto;
 	z-index: 10;
 	border-radius: 4px;
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 10px rgba(0,0,0,0.15);
 }
 
 #contact-form-overlay-mini {
@@ -148,30 +154,26 @@ label.error {
 	font-weight: 400;
 }
 
-label.error {
-	display: none !important;
-}
+label.error { display: none !important; }
 
-.show-error-msg+label.error {
-	display: block !important;
-}
+.show-error-msg + label.error { display: block !important; }
 
-.form-control.error, .sm-form-control.error {
-	border-color: #E42C3E;
-}
+.form-control.error,
+.sm-form-control.error { border-color: #E42C3E; }
+
 
 /* ----------------------------------------------------------------
 	Google Maps
 -----------------------------------------------------------------*/
+
+
 #google-map {
 	position: relative;
 	width: 100%;
 	height: 450px;
 }
 
-.gmap img {
-	max-width: none !important;
-}
+.gmap img { max-width: none !important; }
 
 .gm-style .gm-style-iw h3 span {
 	font-size: inherit;
@@ -190,47 +192,43 @@ label.error {
 	left: 0;
 }
 
+
 /* ----------------------------------------------------------------
 	Google Custom Search
 -----------------------------------------------------------------*/
-#content .cse .gsc-control-cse, #content .gsc-control-cse, #content .gsc-above-wrapper-area,
-	#content .gsc-adBlock, #content .gsc-thumbnail-inside, #content .gsc-url-top,
-	#content .gsc-table-result, #content .gsc-webResult, #content .gsc-result
-	{
-	padding: 0 !important;
-}
 
-#content .gsc-selected-option-container {
-	width: auto !important;
-}
 
-#content .gsc-result-info {
-	padding-left: 0 !important;
-}
+#content .cse .gsc-control-cse,
+#content .gsc-control-cse,
+#content .gsc-above-wrapper-area,
+#content .gsc-adBlock,
+#content .gsc-thumbnail-inside,
+#content .gsc-url-top,
+#content .gsc-table-result,
+#content .gsc-webResult,
+#content .gsc-result { padding: 0 !important; }
 
-#content .gsc-above-wrapper-area-container, #content .gsc-table-result {
-	margin-bottom: 10px;
-}
+#content .gsc-selected-option-container { width: auto !important; }
 
-#content .gcsc-branding {
-	display: none;
-}
+#content .gsc-result-info { padding-left: 0 !important; }
 
-#content .gsc-results, #content .gsc-webResult {
-	width: 100% !important;
-}
+#content .gsc-above-wrapper-area-container,
+#content .gsc-table-result { margin-bottom: 10px; }
 
-#content .gs-no-results-result .gs-snippet, #content .gs-error-result .gs-snippet
-	{
-	margin: 0 !important;
-}
+#content .gcsc-branding { display: none; }
+
+#content .gsc-results,
+#content .gsc-webResult { width: 100% !important; }
+
+#content .gs-no-results-result .gs-snippet,
+#content .gs-error-result .gs-snippet { margin: 0 !important; }
+
 
 /* ----------------------------------------------------------------
 	Quotes & Blockquotes
 -----------------------------------------------------------------*/
-blockquote p {
-	margin-bottom: 15px;
-}
+
+blockquote p { margin-bottom: 15px; }
 
 blockquote.pull-left {
 	max-width: 300px;
@@ -249,9 +247,7 @@ blockquote.pull-right {
 	position: relative;
 }
 
-.quote p {
-	position: relative;
-}
+.quote p { position: relative; }
 
 .quote:before {
 	font-family: 'font-icons';
@@ -276,9 +272,12 @@ blockquote.pull-right {
 	right: 0;
 }
 
+
 /* ----------------------------------------------------------------
 	Dropcaps & Highlights
 -----------------------------------------------------------------*/
+
+
 .dropcap {
 	float: left;
 	font-size: 42px;
@@ -294,9 +293,11 @@ blockquote.pull-right {
 	border-radius: 2px;
 }
 
+
 /* ----------------------------------------------------------------
 	Magazine Specific Classes
 -----------------------------------------------------------------*/
+
 .top-advert {
 	float: right;
 	padding: 5px;
@@ -304,9 +305,8 @@ blockquote.pull-right {
 	border-right: 1px solid #EEE;
 }
 
-.top-advert a, .top-advert img {
-	display: block;
-}
+.top-advert a,
+.top-advert img { display: block; }
 
 .bnews-title {
 	display: block;
@@ -323,20 +323,21 @@ blockquote.pull-right {
 	min-height: 0;
 }
 
+
 /* ----------------------------------------------------------------
 	Text Rotater
 -----------------------------------------------------------------*/
-.text-rotater {
-	
-}
 
-.text-rotater>.t-rotate>.animated {
-	display: inline-block;
-}
+.text-rotater {}
+
+.text-rotater > .t-rotate > .animated { display: inline-block; }
+
 
 /* ----------------------------------------------------------------
 	Go To Top
 -----------------------------------------------------------------*/
+
+
 #gotoTop {
 	display: none;
 	z-index: 299;
@@ -344,7 +345,7 @@ blockquote.pull-right {
 	width: 40px;
 	height: 40px;
 	background-color: #333;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0,0,0,0.3);
 	font-size: 20px;
 	line-height: 36px;
 	text-align: center;
@@ -357,23 +358,22 @@ blockquote.pull-right {
 	border-radius: 2px;
 }
 
-body:not (.device-touch ) #gotoTop {
+body:not(.device-touch) #gotoTop {
 	transition: background-color .2s linear;
 	-webkit-transition: background-color .2s linear;
 	-o-transition: background-color .2s linear;
 }
 
-.stretched #gotoTop {
-	bottom: 30px;
-}
+.stretched #gotoTop { bottom: 30px; }
 
-#gotoTop:hover {
-	background-color: #1ABC9C;
-}
+#gotoTop:hover { background-color: #1ABC9C; }
+
 
 /* ----------------------------------------------------------------
 	Error 404
 -----------------------------------------------------------------*/
+
+
 .error404 {
 	display: block;
 	font-size: 216px;
@@ -383,9 +383,7 @@ body:not (.device-touch ) #gotoTop {
 	letter-spacing: 4px;
 }
 
-.error404-wrap .container {
-	z-index: 7;
-}
+.error404-wrap .container { z-index: 7; }
 
 .error404-wrap .error404 {
 	line-height: 0.9;
@@ -394,7 +392,7 @@ body:not (.device-touch ) #gotoTop {
 	font-size: 244px;
 	color: #FFF !important;
 	opacity: 0.2;
-	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+	text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 }
 
 .error404-wrap .heading-block h4 {
@@ -402,19 +400,17 @@ body:not (.device-touch ) #gotoTop {
 	margin-bottom: 8px;
 }
 
-.error404-wrap .heading-block span {
-	font-size: 17px;
-}
+.error404-wrap .heading-block span { font-size: 17px; }
 
-.error404-wrap form {
-	max-width: 500px;
-}
+.error404-wrap form { max-width: 500px; }
+
 
 /* ----------------------------------------------------------------
 	Landing Pages
 -----------------------------------------------------------------*/
+
 .landing-wide-form {
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(0,0,0,0.3);
 	padding: 30px;
 	border-radius: 3px;
 }
@@ -426,7 +422,7 @@ body:not (.device-touch ) #gotoTop {
 	left: auto;
 	right: 0;
 	bottom: -154px;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0,0,0,0.6);
 	border-radius: 3px 3px 0 0;
 }
 
@@ -438,51 +434,49 @@ body:not (.device-touch ) #gotoTop {
 	overflow: hidden;
 }
 
-.landing-promo h3 {
-	font-size: 26px;
-}
+.landing-promo h3 { font-size: 26px; }
 
-.landing-promo>.container>span {
-	font-size: 17px;
-}
+.landing-promo > .container > span { font-size: 17px; }
+
 
 /* ----------------------------------------------------------------
 	Preloaders
 -----------------------------------------------------------------*/
-.preloader, .preloader2, .form-process {
+
+
+.preloader,
+.preloader2,
+.form-process {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: url("../../../../images/preloader.gif") center center
-		no-repeat #FFF;
+	background: url("../../../../images/preloader.gif") center center no-repeat #FFF;
 }
 
-.preloader2 {
-	background-color: transparent;
-}
+.preloader2 { background-color: transparent; }
 
 .form-process {
 	display: none;
 	position: absolute;
 	z-index: 3;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255,255,255,0.7);
 }
+
 
 /* ----------------------------------------------------------------
 	Toastr Notifications
 -----------------------------------------------------------------*/
-.toast-title {
-	font-weight: bold;
-}
+
+
+.toast-title { font-weight: bold; }
 
 .toast-message {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 }
 
-.toast-message a, .toast-message label {
-	color: #ffffff;
-}
+.toast-message a,
+.toast-message label { color: #ffffff; }
 
 .toast-message a:hover {
 	color: #cccccc;
@@ -497,17 +491,19 @@ body:not (.device-touch ) #gotoTop {
 	color: #ffffff;
 	opacity: 0.8;
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-	filter: alpha(opacity = 80);
+	filter: alpha(opacity=80);
 }
 
-.toast-close-button:hover, .toast-close-button:focus {
+.toast-close-button:hover,
+.toast-close-button:focus {
 	color: #000000;
 	text-decoration: none;
 	cursor: pointer;
 	opacity: 0.5;
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-	filter: alpha(opacity = 50);
+	filter: alpha(opacity=50);
 }
+
 
 button.toast-close-button {
 	padding: 0;
@@ -560,7 +556,7 @@ button.toast-close-button {
 	box-sizing: border-box;
 }
 
-#toast-container>div {
+#toast-container > div {
 	margin: 0 0 6px;
 	padding: 15px;
 	width: 300px;
@@ -570,10 +566,10 @@ button.toast-close-button {
 	color: #ffffff;
 	opacity: 0.8;
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-	filter: alpha(opacity = 80);
+	filter: alpha(opacity=80);
 }
 
-#toast-container>div i {
+#toast-container > div i {
 	position: relative;
 	top: 1px;
 	width: 16px;
@@ -581,48 +577,39 @@ button.toast-close-button {
 	margin-right: 3px;
 }
 
-#toast-container>:hover {
+#toast-container > :hover {
 	opacity: 1;
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-	filter: alpha(opacity = 100);
+	filter: alpha(opacity=100);
 	cursor: pointer;
 }
 
-#toast-container.toast-top-full-width>div, #toast-container.toast-bottom-full-width>div
-	{
+#toast-container.toast-top-full-width > div,
+#toast-container.toast-bottom-full-width > div {
 	width: 96%;
 	margin: auto;
 }
 
-.toast {
-	background-color: #030303;
-}
+.toast { background-color: #030303; }
 
-.toast-success {
-	background-color: #51a351;
-}
+.toast-success { background-color: #51a351; }
 
-.toast-error {
-	background-color: #bd362f;
-}
+.toast-error { background-color: #bd362f; }
 
-.toast-info {
-	background-color: #2f96b4;
-}
+.toast-info { background-color: #2f96b4; }
 
-.toast-warning {
-	background-color: #f89406;
-}
+.toast-warning { background-color: #f89406; }
+
 
 @media all and (min-width: 240px) and (max-width: 479px) {
-	#toast-container>div {
+	#toast-container > div {
 		padding: 8px;
 		width: 18em;
 	}
 }
 
 @media all and (min-width: 480px) and (max-width: 767px) {
-	#toast-container>div {
+	#toast-container > div {
 		padding: 15px;
 		width: 25em;
 	}
@@ -631,15 +618,18 @@ button.toast-close-button {
 /* ----------------------------------------------------------------
 	Wedding
 -----------------------------------------------------------------*/
+
+
 .wedding-head {
 	position: relative;
 	line-height: 1;
 	font-size: 80px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.15);
 }
 
-.wedding-head .first-name, .wedding-head .last-name, .wedding-head .and
-	{
+.wedding-head .first-name,
+.wedding-head .last-name,
+.wedding-head .and {
 	display: inline-block;
 	margin-right: 15px;
 	font-weight: bold;
@@ -654,7 +644,8 @@ button.toast-close-button {
 	text-align: left;
 }
 
-.wedding-head .first-name span, .wedding-head .last-name span {
+.wedding-head .first-name span,
+.wedding-head .last-name span {
 	display: block;
 	margin-top: 10px;
 	font-size: 56px;

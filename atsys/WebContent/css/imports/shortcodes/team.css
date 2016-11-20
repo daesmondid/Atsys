@@ -1,24 +1,26 @@
+
 /*-----------------------------------------------------------------------------------
 
     Shortcodes: team.css
 
 -----------------------------------------------------------------------------------*/
 
+
 /* ----------------------------------------------------------------
 	Team
 -----------------------------------------------------------------*/
-.team, .team-image {
-	position: relative;
-}
 
-.team-image>a, .team-image img {
+
+.team,
+.team-image { position: relative; }
+
+.team-image > a,
+.team-image img {
 	display: block;
 	width: 100%;
 }
 
-.team-desc {
-	text-align: center;
-}
+.team-desc { text-align: center; }
 
 .team-desc.team-desc-bg {
 	background-color: #FFF;
@@ -64,11 +66,10 @@
 	color: #777;
 }
 
-.team-content p:last-child {
-	margin-bottom: 0;
-}
+.team-content p:last-child { margin-bottom: 0; }
 
-.team-overlay, .team-overlay:before {
+.team-overlay,
+.team-overlay:before {
 	opacity: 0;
 	position: absolute;
 	z-index: 2;
@@ -79,7 +80,7 @@
 	text-align: center;
 }
 
-body:not (.device-touch ) .team-overlay {
+body:not(.device-touch) .team-overlay {
 	-webkit-transition: opacity .3s ease;
 	-o-transition: opacity .3s ease;
 	transition: opacity .3s ease;
@@ -100,19 +101,21 @@ body:not (.device-touch ) .team-overlay {
 	display: inline-block;
 }
 
-.team:hover .team-overlay {
-	opacity: 1;
-}
+.team:hover .team-overlay { opacity: 1; }
+
 
 /* Team Center
 -----------------------------------------------------------------*/
+
 .team.center .team-title:after {
 	left: 50%;
 	margin-left: -40px;
 }
 
+
 /* Team List
 -----------------------------------------------------------------*/
+
 .team.team-list .team-image {
 	float: left;
 	width: 250px;
@@ -125,19 +128,13 @@ body:not (.device-touch ) .team-overlay {
 	text-align: left;
 }
 
-.team.team-list .team-title {
-	padding-top: 0;
-}
+.team.team-list .team-title { padding-top: 0; }
 
-.team .team-desc>.social-icon {
-	margin-top: 20px;
-}
+.team .team-desc > .social-icon { margin-top: 20px; }
 
-.team .team-content ~ .social-icon {
-	margin-top: 30px;
-}
+.team .team-content ~ .social-icon { margin-top: 30px; }
 
-.team:not (.team-list ) .social-icon {
+.team:not(.team-list) .social-icon {
 	display: inline-block;
 	float: none;
 	margin-left: 6px;

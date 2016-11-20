@@ -1,12 +1,16 @@
+
 /*-----------------------------------------------------------------------------------
 
     Shortcodes: dividers.css
 
 -----------------------------------------------------------------------------------*/
 
+
 /* ----------------------------------------------------------------
 	Divider
 -----------------------------------------------------------------*/
+
+
 .divider {
 	position: relative;
 	overflow: hidden;
@@ -15,12 +19,11 @@
 	width: 100%;
 }
 
-.divider.divider-margin {
-	margin: 70px 0;
-}
+.divider.divider-margin { margin: 70px 0; }
 
-.divider:after, .divider.divider-center:before, .divider.divider-center.divider-short:before
-	{
+.divider:after,
+.divider.divider-center:before,
+.divider.divider-center.divider-short:before {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -30,18 +33,13 @@
 	border-top: 1px solid #EEE;
 }
 
-.divider.divider-thick:after, .divider.divider-center.divider-thick:before,
-	.divider.divider-center.divider-short.divider-thick:before {
-	border-top-width: 3px;
-}
+.divider.divider-thick:after,
+.divider.divider-center.divider-thick:before,
+.divider.divider-center.divider-short.divider-thick:before { border-top-width: 3px; }
 
-.divider.divider-short:after {
-	width: 30%;
-}
+.divider.divider-short:after { width: 30%; }
 
-.divider.divider-vshort:after {
-	width: 12%;
-}
+.divider.divider-vshort:after { width: 12%; }
 
 .divider i {
 	position: relative;
@@ -61,26 +59,25 @@
 	transition: all .3s ease;
 }
 
-.divider a:hover {
-	color: #888;
-}
+.divider a:hover { color: #888; }
+
 
 /* Divider - Icon Align Right
 -----------------------------------------------------------------*/
-.divider.divider-right {
-	text-align: right;
-}
+
+.divider.divider-right { text-align: right; }
 
 .divider.divider-right:after {
 	left: auto;
 	right: 30px;
 }
 
+
 /* Divider - Icon Align Center
 -----------------------------------------------------------------*/
-.divider.divider-center, .divider.divider-center.divider-short {
-	text-align: center;
-}
+
+.divider.divider-center,
+.divider.divider-center.divider-short { text-align: center; }
 
 .divider.divider-center:before {
 	left: -50% !important;
@@ -94,8 +91,10 @@
 	margin-left: 20px;
 }
 
+
 /* Short Divider - Icon Align Center
 -----------------------------------------------------------------*/
+
 .divider.divider-center.divider-short:before {
 	left: auto !important;
 	right: 50%;
@@ -110,26 +109,27 @@
 	width: 15%;
 }
 
-.divider.divider-center.divider-vshort:before, .divider.divider-center.divider-vshort:after
-	{
-	width: 6%;
-}
+.divider.divider-center.divider-vshort:before,
+.divider.divider-center.divider-vshort:after { width: 6%; }
+
 
 /* Divider - Rounded Icon
 -----------------------------------------------------------------*/
-.divider.divider-rounded {
-	color: #BBB;
-}
 
-.divider.divider-rounded:after, .divider.divider-rounded.divider-center:before,
-	.divider.divider-rounded.divider-short:before, .divider.divider-border:after,
-	.divider.divider-border.divider-center:before, .divider.divider-border.divider-short:before
-	{
+.divider.divider-rounded { color: #BBB; }
+
+.divider.divider-rounded:after,
+.divider.divider-rounded.divider-center:before,
+.divider.divider-rounded.divider-short:before,
+.divider.divider-border:after,
+.divider.divider-border.divider-center:before,
+.divider.divider-border.divider-short:before {
 	top: 19px;
 	left: 40px;
 }
 
-.divider.divider-rounded i, .divider.divider-border i {
+.divider.divider-rounded i,
+.divider.divider-border i {
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
@@ -137,17 +137,17 @@
 	border-radius: 50%;
 }
 
-.divider.divider-rounded.divider-right:after, .divider.divider-border.divider-right:after
-	{
+.divider.divider-rounded.divider-right:after,
+.divider.divider-border.divider-right:after {
 	left: auto;
 	right: 40px;
 }
 
+
 /* Divider - Rounded & Border
 -----------------------------------------------------------------*/
-.divider.divider-border {
-	color: #E5E5E5;
-}
+
+.divider.divider-border { color: #E5E5E5; }
 
 .divider.divider-border i {
 	line-height: 38px;
@@ -155,9 +155,12 @@
 	border: 1px solid #EEE;
 }
 
+
 /* Divider - Line Only
 -----------------------------------------------------------------*/
-.divider.divider-line:before, .divider.divider-line:after {
+
+.divider.divider-line:before,
+.divider.divider-line:after {
 	margin-left: 0 !important;
 	margin-right: 0 !important;
 }
