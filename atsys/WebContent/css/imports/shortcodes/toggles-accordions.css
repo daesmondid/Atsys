@@ -1,24 +1,19 @@
-
 /*-----------------------------------------------------------------------------------
 
     Shortcodes: toggles-accordions.less
 
 -----------------------------------------------------------------------------------*/
 
-
 /* ----------------------------------------------------------------
 	Toggle
 -----------------------------------------------------------------*/
-
-
 .toggle {
 	display: block;
 	position: relative;
 	margin: 0 0 20px 0;
 }
 
-.toggle .togglet,
-.toggle .toggleta {
+.toggle .togglet, .toggle .toggleta {
 	display: block;
 	position: relative;
 	line-height: 24px;
@@ -40,12 +35,17 @@
 	line-height: 24px;
 }
 
-.toggle .toggleta { font-weight: bold; }
+.toggle .toggleta {
+	font-weight: bold;
+}
 
-.toggle .togglet i.toggle-open,
-.toggle .toggleta i.toggle-closed { display: none; }
+.toggle .togglet i.toggle-open, .toggle .toggleta i.toggle-closed {
+	display: none;
+}
 
-.toggle .toggleta i.toggle-open { display: block; }
+.toggle .toggleta i.toggle-open {
+	display: block;
+}
 
 .toggle .togglec {
 	display: block;
@@ -53,12 +53,9 @@
 	padding: 10px 0 0 24px;
 }
 
-
 /* Toggle - with Title Background
 -----------------------------------------------------------------*/
-
-.toggle.toggle-bg .togglet,
-.toggle.toggle-bg .toggleta {
+.toggle.toggle-bg .togglet, .toggle.toggle-bg .toggleta {
 	background-color: #EEE;
 	line-height: 44px;
 	padding: 0 0 0 36px;
@@ -70,19 +67,18 @@
 	line-height: 44px;
 }
 
-.toggle.toggle-bg .togglec { padding: 12px 0 0 36px; }
-
+.toggle.toggle-bg .togglec {
+	padding: 12px 0 0 36px;
+}
 
 /* Toggle - Bordered
 -----------------------------------------------------------------*/
-
 .toggle.toggle-border {
 	border: 1px solid #CCC;
 	border-radius: 4px;
 }
 
-.toggle.toggle-border .togglet,
-.toggle.toggle-border .toggleta {
+.toggle.toggle-border .togglet, .toggle.toggle-border .toggleta {
 	line-height: 44px;
 	padding: 0 15px 0 36px;
 }
@@ -92,14 +88,16 @@
 	line-height: 44px;
 }
 
-.toggle.toggle-border .togglec { padding: 0 15px 15px 36px; }
-
+.toggle.toggle-border .togglec {
+	padding: 0 15px 15px 36px;
+}
 
 /* ----------------------------------------------------------------
 	Accordions
 -----------------------------------------------------------------*/
-
-.accordion { margin-bottom: 20px; }
+.accordion {
+	margin-bottom: 20px;
+}
 
 .acctitle {
 	display: block;
@@ -114,9 +112,13 @@
 	padding: 10px 0 10px 20px;
 }
 
-.acctitlec { cursor: auto; }
+.acctitlec {
+	cursor: auto;
+}
 
-.acctitle:first-child { border-top: none; }
+.acctitle:first-child {
+	border-top: none;
+}
 
 .acctitle i {
 	position: absolute;
@@ -128,22 +130,22 @@
 	line-height: 44px;
 }
 
-.acctitle i.acc-open,
-.acctitlec i.acc-closed { display: none; }
+.acctitle i.acc-open, .acctitlec i.acc-closed {
+	display: none;
+}
 
-.acctitlec i.acc-open { display: block; }
+.acctitlec i.acc-open {
+	display: block;
+}
 
 .acc_content {
 	position: relative;
 	padding: 0 0 15px 20px;
 }
 
-
 /* Accordion - with Title Background
 -----------------------------------------------------------------*/
-
-.accordion.accordion-bg .acctitle,
-.accordion.accordion-bg .acctitlec {
+.accordion.accordion-bg .acctitle, .accordion.accordion-bg .acctitlec {
 	background-color: #EEE;
 	line-height: 44px;
 	padding: 0 0 0 36px;
@@ -156,19 +158,19 @@
 	line-height: 44px;
 }
 
-.accordion.accordion-bg .acc_content { padding: 10px 0 15px 36px; }
-
+.accordion.accordion-bg .acc_content {
+	padding: 10px 0 15px 36px;
+}
 
 /* Accordion - Bordered
 -----------------------------------------------------------------*/
-
 .accordion.accordion-border {
 	border: 1px solid #DDD;
 	border-radius: 4px;
 }
 
-.accordion.accordion-border .acctitle,
-.accordion.accordion-border .acctitlec {
+.accordion.accordion-border .acctitle, .accordion.accordion-border .acctitlec
+	{
 	border-color: #CCC;
 	line-height: 44px;
 	padding: 0 15px 0 36px;
@@ -179,12 +181,12 @@
 	line-height: 44px;
 }
 
-.accordion.accordion-border .acc_content { padding: 0 15px 15px 36px; }
-
+.accordion.accordion-border .acc_content {
+	padding: 0 15px 15px 36px;
+}
 
 /* Accordion - Large
 -----------------------------------------------------------------*/
-
 .accordion.accordion-lg .acctitle {
 	font-size: 23px;
 	line-height: 44px;
@@ -198,4 +200,6 @@
 	line-height: 64px;
 }
 
-.accordion.accordion-lg .acc_content { padding: 10px 0 30px 30px; }
+.accordion.accordion-lg .acc_content {
+	padding: 10px 0 30px 30px;
+}

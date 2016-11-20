@@ -3,68 +3,45 @@
 
 	Replace your Fonts as necessary
 -----------------------------------------------------------------*/
+body, small, #primary-menu ul ul li>a, .wp-caption, .feature-box.fbox-center.fbox-italic p,
+	.skills li .progress-percent .counter, .nav-tree ul ul a {
+	font-family: 'Lato', sans-serif;
+}
 
+h1, h2, h3, h4, h5, h6, #logo, #primary-menu ul li>a, #primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column>li.mega-menu-title>a,
+	#top-search form input, .entry-link, .entry.entry-date-section span,
+	.button.button-desc, .counter, label, .nav-tree li a, .wedding-head .first-name,
+	.wedding-head .last-name {
+	font-family: 'Raleway', sans-serif;
+}
 
+.entry-meta li, .entry-link span, .entry blockquote p, .more-link,
+	.comment-content .comment-author span, .button.button-desc span,
+	.testi-content p, .team-title span, .before-heading, .wedding-head .first-name span,
+	.wedding-head .last-name span {
+	font-family: 'Crete Round', serif;
+}
 
-body,
-small,
-#primary-menu ul ul li > a,
-.wp-caption,
-.feature-box.fbox-center.fbox-italic p,
-.skills li .progress-percent .counter,
-.nav-tree ul ul a { font-family: 'Lato', sans-serif; }
+.font-body {
+	font-family: 'Lato', sans-serif !important;
+}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-#logo,
-#primary-menu ul li > a,
-#primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column > li.mega-menu-title > a,
-#top-search form input,
-.entry-link,
-.entry.entry-date-section span,
-.button.button-desc,
-.counter,
-label,
-.nav-tree li a,
-.wedding-head .first-name,
-.wedding-head .last-name { font-family: 'Raleway', sans-serif; }
+.font-primary {
+	font-family: 'Raleway', sans-serif !important;
+}
 
-.entry-meta li,
-.entry-link span,
-.entry blockquote p,
-.more-link,
-.comment-content .comment-author span,
-.button.button-desc span,
-.testi-content p,
-.team-title span,
-.before-heading,
-.wedding-head .first-name span,
-.wedding-head .last-name span { font-family: 'Crete Round', serif; }
-
-.font-body { font-family: 'Lato', sans-serif !important; }
-
-.font-primary { font-family: 'Raleway', sans-serif !important; }
-
-.font-secondary { font-family: 'Crete Round', serif !important; }
-
+.font-secondary {
+	font-family: 'Crete Round', serif !important;
+}
 
 /* ----------------------------------------------------------------
 	You can change your Font Specific Settings here
 -----------------------------------------------------------------*/
+body {
+	line-height: 1.5;
+}
 
-
-body { line-height: 1.5; }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 	line-height: 1.5;
 }
@@ -74,20 +51,21 @@ h6 {
 	line-height: 100%;
 }
 
-#primary-menu ul li > a {
+#primary-menu ul li>a {
 	font-weight: bold;
 	font-size: 13px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
 
-#primary-menu ul ul li > a {
+#primary-menu ul ul li>a {
 	font-size: 12px;
 	font-weight: 600;
 	letter-spacing: 0;
 }
 
-#primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column > li.mega-menu-title > a {
+#primary-menu ul li .mega-menu-content.style-2 ul.mega-menu-column>li.mega-menu-title>a
+	{
 	font-size: 13px;
 	font-weight: bold;
 	letter-spacing: 1px;
@@ -134,7 +112,9 @@ h6 {
 	text-transform: uppercase;
 }
 
-.more-link { font-style: italic; }
+.more-link {
+	font-style: italic;
+}
 
 .comment-content .comment-author span {
 	font-size: 12px;
@@ -142,7 +122,9 @@ h6 {
 	font-style: italic;
 }
 
-.wp-caption { font-style: italic; }
+.wp-caption {
+	font-style: italic;
+}
 
 .button.button-desc {
 	font-size: 22px;
@@ -157,9 +139,13 @@ h6 {
 	text-transform: none;
 }
 
-.feature-box.fbox-center.fbox-italic p { font-style: italic; }
+.feature-box.fbox-center.fbox-italic p {
+	font-style: italic;
+}
 
-.testi-content p { font-style: italic; }
+.testi-content p {
+	font-style: italic;
+}
 
 .team-title span {
 	font-weight: 400;
@@ -172,7 +158,9 @@ h6 {
 	font-weight: 600;
 }
 
-.skills li .progress-percent .counter { font-weight: 400; }
+.skills li .progress-percent .counter {
+	font-weight: 400;
+}
 
 label {
 	font-size: 13px;
@@ -187,15 +175,13 @@ label {
 	font-weight: 400;
 }
 
-.wedding-head .first-name,
-.wedding-head .last-name {
+.wedding-head .first-name, .wedding-head .last-name {
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
 
-.wedding-head .first-name span,
-.wedding-head .last-name span {
+.wedding-head .first-name span, .wedding-head .last-name span {
 	font-size: 56px;
 	font-weight: 400;
 	font-style: italic;

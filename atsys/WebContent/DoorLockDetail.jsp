@@ -1,44 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-    
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
 <head>
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="SemiColonWeb" />
 
-	<!-- Stylesheets
+<!-- Stylesheets
 	============================================= -->
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" href="css/dark.css" type="text/css" />
-	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-	<link rel="stylesheet" href="css/animate.css" type="text/css" />
-	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-	<link rel="stylesheet" href="css/calendar.css" type="text/css" />
-	
-	<!-- Bootstrap Data Table Plugin -->
-	<link rel="stylesheet" href="css/components/bs-datatable.css" type="text/css" />
+<link
+	href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="css/dark.css" type="text/css" />
+<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+<link rel="stylesheet" href="css/animate.css" type="text/css" />
+<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+<link rel="stylesheet" href="css/calendar.css" type="text/css" />
 
-	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--[if lt IE 9]>
+<!-- Bootstrap Data Table Plugin -->
+<link rel="stylesheet" href="css/components/bs-datatable.css"
+	type="text/css" />
+
+<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 	<![endif]-->
-	
-	<link rel="stylesheet" href="css/colors.css" type="text/css" />
 
-	<!-- Document Title
+<link rel="stylesheet" href="css/colors.css" type="text/css" />
+
+<!-- Document Title
 	============================================= -->
-	<title>Vertical Navigation Tree | Canvas</title>
+<title>Vertical Navigation Tree | Canvas</title>
 
 <style>
-
 #vertical-nav {
 	position: fixed;
 	top: 0;
@@ -55,7 +57,9 @@
 	transition: padding .4s ease;
 }
 
-.sticky-header + #vertical-nav { padding-top: 100px; }
+.sticky-header+#vertical-nav {
+	padding-top: 100px;
+}
 
 #vertical-nav nav ul {
 	margin-bottom: 0;
@@ -79,7 +83,7 @@
 	text-align: center;
 }
 
-#vertical-nav nav li i:not(.icon-angle-down) {
+#vertical-nav nav li i:not (.icon-angle-down ) {
 	margin-right: 8px;
 	position: relative;
 	top: 1px;
@@ -90,14 +94,15 @@
 	margin-left: 5px;
 }
 
-#vertical-nav nav li:hover > a,
-#vertical-nav nav li.current > a,
-#vertical-nav nav li.active > a {
+#vertical-nav nav li:hover>a, #vertical-nav nav li.current>a,
+	#vertical-nav nav li.active>a {
 	background-color: #FFF;
 	color: #1ABC9C;
 }
 
-#vertical-nav nav ul ul { display: none; }
+#vertical-nav nav ul ul {
+	display: none;
+}
 
 #vertical-nav nav ul ul a {
 	font-size: 12px;
@@ -106,38 +111,39 @@
 	font-family: 'Lato', sans-serif;
 }
 
-#vertical-nav nav ul ul a i.icon-angle-down { font-size: 12px; }
+#vertical-nav nav ul ul a i.icon-angle-down {
+	font-size: 12px;
+}
 
-#vertical-nav nav ul ul ul a { padding-left: 60px; }
-#vertical-nav nav ul ul ul ul a { padding-left: 75px; }
+#vertical-nav nav ul ul ul a {
+	padding-left: 60px;
+}
 
-@media (min-width: 992px) {
+#vertical-nav nav ul ul ul ul a {
+	padding-left: 75px;
+}
 
-	#header { z-index: 199; }
-
-	#page-title,
-	#content,
-	#footer { margin-left: 240px; }
-
-	#page-title .container,
-	#content .container,
-	#footer .container {
+@media ( min-width : 992px) {
+	#header {
+		z-index: 199;
+	}
+	#page-title, #content, #footer {
+		margin-left: 240px;
+	}
+	#page-title .container, #content .container, #footer .container {
 		width: auto;
 		padding: 0 60px;
 	}
-
 	#vertical-nav .container {
 		width: 100%;
 		padding: 0;
 	}
-
-	#page-title .breadcrumb { right: 60px !important; }
-
+	#page-title .breadcrumb {
+		right: 60px !important;
+	}
 }
 
-
-@media (max-width: 991px) {
-
+@media ( max-width : 991px) {
 	#vertical-nav {
 		position: relative;
 		width: 100%;
@@ -147,21 +153,26 @@
 		height: auto;
 		padding: 0;
 	}
-
-	#vertical-nav .container { padding: 10px 20px; }
-
-	#vertical-nav nav li a { padding: 10px 0; }
-
-	#vertical-nav nav li:hover > a,
-	#vertical-nav nav li.current > a,
-	#vertical-nav nav li.active > a { background-color: transparent; }
-
-	#vertical-nav nav ul ul a { padding-left: 15px; }
-	#vertical-nav nav ul ul ul a { padding-left: 30px; }
-	#vertical-nav nav ul ul ul ul a { padding-left: 45px; }
-
+	#vertical-nav .container {
+		padding: 10px 20px;
+	}
+	#vertical-nav nav li a {
+		padding: 10px 0;
+	}
+	#vertical-nav nav li:hover>a, #vertical-nav nav li.current>a,
+		#vertical-nav nav li.active>a {
+		background-color: transparent;
+	}
+	#vertical-nav nav ul ul a {
+		padding-left: 15px;
+	}
+	#vertical-nav nav ul ul ul a {
+		padding-left: 30px;
+	}
+	#vertical-nav nav ul ul ul ul a {
+		padding-left: 45px;
+	}
 }
-
 </style>
 
 </head>
@@ -174,245 +185,287 @@
 
 		<!-- Header
 		============================================= -->
-		<%@include file="DefaultHead.jsp" %>
+		<%@include file="DefaultHead.jsp"%>
 		<!-- #header end -->
 
-		<%@include file="DefaultSidebar.jsp" %>
+		<%@include file="DefaultSidebar.jsp"%>
 
 		<!-- Page Title
 		============================================= -->
 		<section id="page-title">
 
-			<div class="container clearfix">
-				<h1>Door Lock Detail</h1>
-				<!-- Modal Contact Form
+		<div class="container clearfix">
+			<h1>Door Lock Detail</h1>
+			<!-- Modal Contact Form
 				============================================= -->
-				<a href="#" data-toggle="modal" data-target="#contactFormModal" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
+			<a href="#" data-toggle="modal" data-target="#contactFormModal"
+				class="button button-rounded button-mini nomargin"
+				style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
 
-				<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								<h4 class="modal-title" id="contactFormModalLabel">Edit Door Lock Device</h4>
+			<div class="modal fade" id="contactFormModal" tabindex="-1"
+				role="dialog" aria-labelledby="contactFormModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="contactFormModalLabel">Edit Door
+								Lock Device</h4>
+						</div>
+						<div class="modal-body">
+
+							<div class="contact-widget">
+								<div class="contact-form-result"></div>
+								<form class="nobottommargin" id="template-contactform"
+									name="template-contactform"
+									action="DoorLockEditProcess?id=${requestScope.doorLock.id}"
+									method="post">
+
+									<div class="form-process"></div>
+
+									<div class="col_full">
+										<label for="template-contactform-name">Name <small>*</small></label>
+										<input type="text" id="template-contactform-name" name="name"
+											value="${requestScope.doorLock.name}"
+											class="required sm-form-control" />
+									</div>
+
+									<div class="clear"></div>
+
+									<div class="col_two_third">
+										<label for="template-contactform-logicboard">Logic
+											Board <small>*</small>
+										</label> <select id="template-contactform-logicboard"
+											name="logicBoardId" class="required sm-form-control"
+											style="height: 40px;">
+											<option value="">-- Select One --</option>
+											<c:forEach items="${logicBoardList}" var="logicBoard">
+												<c:choose>
+													<c:when
+														test="${logicBoard.id == requestScope.doorLock.logicBoard.id}">
+														<option value="${logicBoard.id}" selected>${logicBoard.id}</option>
+													</c:when>
+													<c:otherwise>
+														<option value="${logicBoard.id}">${logicBoard.id}</option>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</select>
+									</div>
+
+									<div class="col_one_third col_last">
+										<label for="template-contactform-pin">Board Pin Array
+											<small>*</small>
+										</label> <input type="text" id="template-contactform-pin" name="pin"
+											value="${requestScope.doorLock.pin}"
+											class="required sm-form-control" />
+									</div>
+
+									<div class="clear"></div>
+
+									<div class="col_full hidden">
+										<input type="text" id="template-contactform-botcheck"
+											name="template-contactform-botcheck" value=""
+											class="sm-form-control" />
+									</div>
+
+									<div class="col_full">
+										<button class="button button-3d nomargin" type="submit"
+											id="template-contactform-submit"
+											name="template-contactform-submit" value="submit">Save</button>
+									</div>
+
+								</form>
+
 							</div>
-							<div class="modal-body">
-
-								<div class="contact-widget">
-									<div class="contact-form-result"></div>
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="DoorLockEditProcess?id=${requestScope.doorLock.id}" method="post">
-
-										<div class="form-process"></div>
-
-										<div class="col_full">
-											<label for="template-contactform-name">Name <small>*</small></label>
-											<input type="text" id="template-contactform-name" name="name" value="${requestScope.doorLock.name}" class="required sm-form-control" />
-										</div>
-
-										<div class="clear"></div>
-
-										<div class="col_two_third">
-											<label for="template-contactform-logicboard">Logic Board <small>*</small></label>
-											<select id="template-contactform-logicboard" name="logicBoardId" class="required sm-form-control" style="height: 40px;">
-												<option value="">-- Select One --</option>
-												<c:forEach items="${logicBoardList}" var="logicBoard">
-													<c:choose>
-														<c:when test="${logicBoard.id == requestScope.doorLock.logicBoard.id}">
-															<option value="${logicBoard.id}" selected>${logicBoard.id}</option>
-														</c:when>
-														<c:otherwise>
-															<option value="${logicBoard.id}">${logicBoard.id}</option>
-														</c:otherwise>
-													</c:choose>
-										  		</c:forEach>
-											</select>
-										</div>
-										
-										<div class="col_one_third col_last">
-											<label for="template-contactform-pin">Board Pin Array <small>*</small></label>
-											<input type="text" id="template-contactform-pin" name="pin" value="${requestScope.doorLock.pin}" class="required sm-form-control" />
-										</div>
-
-										<div class="clear"></div>
-
-										<div class="col_full hidden">
-											<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
-										</div>
-
-										<div class="col_full">
-											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Save</button>
-										</div>
-
-									</form>
-
-								</div>
 
 
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-				</div><!-- /.modal -->
-				<!-- Modal Contact Form End -->
-				<a href="DoorLockDeleteProcess?id=${requestScope.doorLock.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
-				<ol class="breadcrumb">
-					<li>Devices</li>
-					<li><a href="DoorLock">Door Lock Device List</a></li>
-					<li class="active">Door Lock Device ${requestScope.doorLock.id} Detail</li>
-				</ol>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal" onClick="window.location.reload()">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
 			</div>
-			
-		</section><!-- #page-title end -->
+			<!-- /.modal -->
+			<!-- Modal Contact Form End -->
+			<a href="DoorLockDeleteProcess?id=${requestScope.doorLock.id}"
+				class="button button-rounded button-mini nomargin"
+				style="margin-top: 20px !important;">Delete</a>
+			<ol class="breadcrumb">
+				<li>Devices</li>
+				<li><a href="DoorLock">Door Lock Device List</a></li>
+				<li class="active">Door Lock Device ${requestScope.doorLock.id}
+					Detail</li>
+			</ol>
+		</div>
+
+		</section>
+		<!-- #page-title end -->
 
 		<!-- Content
 		============================================= -->
 		<section id="content">
 
-			<div class="content-wrap">
+		<div class="content-wrap">
 
-				<div class="container clearfix">
+			<div class="container clearfix">
 
-					<div class="row clearfix">
+				<div class="row clearfix">
 
-						<div>
+					<div>
 
-							<div class="heading-block noborder">
-								<h3>${requestScope.doorLock.name}</h3>
-								<span>${requestScope.doorLock.logicBoard.user.name}</span>
-							</div>
+						<div class="heading-block noborder">
+							<h3>${requestScope.doorLock.name}</h3>
+							<span>${requestScope.doorLock.logicBoard.user.name}</span>
+						</div>
 
-							<div class="clear"></div>
+						<div class="clear"></div>
 
-							<div class="row clearfix">
+						<div class="row clearfix">
 
-								<div class="col-md-12">
+							<div class="col-md-12">
 
-									<div class="tabs tabs-alt clearfix" id="tabs-profile">
+								<div class="tabs tabs-alt clearfix" id="tabs-profile">
 
-										<ul class="tab-nav clearfix">
-											<li><a href="#tab-feeds"><i class="icon-line2-lock"></i> General</a></li>
-											<li><a href="#tab-posts"><i class="icon-line-paper-stack"></i> Board</a></li>
-											<li><a href="#tab-replies"><i class="icon-line-paper"></i> Tickets</a></li>
-										</ul>
+									<ul class="tab-nav clearfix">
+										<li><a href="#tab-feeds"><i class="icon-line2-lock"></i>
+												General</a></li>
+										<li><a href="#tab-posts"><i
+												class="icon-line-paper-stack"></i> Board</a></li>
+										<li><a href="#tab-replies"><i class="icon-line-paper"></i>
+												Tickets</a></li>
+									</ul>
 
-										<div class="tab-container">
+									<div class="tab-container">
 
-											<div class="tab-content clearfix" id="tab-feeds">
-												
-												<div class="table-responsive">
-													<table class="table table-bordered">
-													  <colgroup>
+										<div class="tab-content clearfix" id="tab-feeds">
+
+											<div class="table-responsive">
+												<table class="table table-bordered">
+													<colgroup>
 														<col class="col-xs-1">
 														<col class="col-xs-7">
-													  </colgroup>
-													  <tbody>
+													</colgroup>
+													<tbody>
 														<tr>
-														  <td>Door Lock ID</td>
-														  <td>${requestScope.doorLock.id}</td>
+															<td>Door Lock ID</td>
+															<td>${requestScope.doorLock.id}</td>
 														</tr>
 														<tr>
-														  <td>Device ID</td>
-														  <td>${requestScope.doorLock.deviceId}</td>
+															<td>Device ID</td>
+															<td>${requestScope.doorLock.deviceId}</td>
 														</tr>
 														<tr>
-														  <td>Name</td>
-														  <td>${requestScope.doorLock.name}</td>
+															<td>Name</td>
+															<td>${requestScope.doorLock.name}</td>
 														</tr>
 														<tr>
-														  <td>User</td>
-														  <td><a href="UserDetail?id=${requestScope.doorLock.logicBoard.user.id}" style="text-decoration: underline !important;">${requestScope.doorLock.logicBoard.user.name}</a></td>
+															<td>User</td>
+															<td><a
+																href="UserDetail?id=${requestScope.doorLock.logicBoard.user.id}"
+																style="text-decoration: underline !important;">${requestScope.doorLock.logicBoard.user.name}</a></td>
 														</tr>
-													  </tbody>
-													</table>
-												  </div>
-
+													</tbody>
+												</table>
 											</div>
-											<div class="tab-content clearfix" id="tab-posts">
 
-												<div class="table-responsive">
-													<table class="table table-bordered">
-													  <colgroup>
+										</div>
+										<div class="tab-content clearfix" id="tab-posts">
+
+											<div class="table-responsive">
+												<table class="table table-bordered">
+													<colgroup>
 														<col class="col-xs-1">
 														<col class="col-xs-7">
-													  </colgroup>
-													  <tbody>
+													</colgroup>
+													<tbody>
 														<tr>
-														  <td>Board ID</td>
-														  <td>${requestScope.doorLock.logicBoard.id}</td>
+															<td>Board ID</td>
+															<td>${requestScope.doorLock.logicBoard.id}</td>
 														</tr>
 														<tr>
-														  <td>Board Name</td>
-														  <td>${requestScope.doorLock.logicBoard.name}</td>
+															<td>Board Name</td>
+															<td>${requestScope.doorLock.logicBoard.name}</td>
 														</tr>
 														<tr>
-														  <td>Board IP Address</td>
-														  <td>${requestScope.doorLock.logicBoard.address}</td>
+															<td>Board IP Address</td>
+															<td>${requestScope.doorLock.logicBoard.address}</td>
 														</tr>
 														<tr>
-														  <td>Device Pin Array</td>
-														  <td>${requestScope.doorLock.pin}</td>
+															<td>Device Pin Array</td>
+															<td>${requestScope.doorLock.pin}</td>
 														</tr>
 														<tr>
-														  <td>Connection Status</td>
-														  <c:forEach items="${connectionStatusList}" var="connectionStatus">
-															  <c:choose>
-																  <c:when test="${fn:containsIgnoreCase(connectionStatus, requestScope.doorLock.logicBoard.connectionStatus)}">
-																	  <td>${connectionStatus}</td>
-																  </c:when>
-															  </c:choose>
-												  		  </c:forEach>
+															<td>Connection Status</td>
+															<c:forEach items="${connectionStatusList}"
+																var="connectionStatus">
+																<c:choose>
+																	<c:when
+																		test="${fn:containsIgnoreCase(connectionStatus, requestScope.doorLock.logicBoard.connectionStatus)}">
+																		<td>${connectionStatus}</td>
+																	</c:when>
+																</c:choose>
+															</c:forEach>
 														</tr>
-													  </tbody>
-													</table>
-												  </div>
-
+													</tbody>
+												</table>
 											</div>
-											<div class="tab-content clearfix" id="tab-replies">
 
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Subject</th>
-																<th>Ticket Status</th>
-																<th>User</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Subject</th>
-																<th>Ticket Status</th>
-																<th>User</th>
-															</tr>
-														</tfoot>
-														<tbody>
+										</div>
+										<div class="tab-content clearfix" id="tab-replies">
+
+											<div class="table-responsive">
+
+												<table id="datatable1"
+													class="table table-striped table-bordered" cellspacing="0"
+													width="100%">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Subject</th>
+															<th>Ticket Status</th>
+															<th>User</th>
+														</tr>
+													</thead>
+													<tfoot>
+														<tr>
+															<th>ID</th>
+															<th>Subject</th>
+															<th>Ticket Status</th>
+															<th>User</th>
+														</tr>
+													</tfoot>
+													<tbody>
 														<c:forEach items="${ticketList}" var="ticket">
 															<c:choose>
-																<c:when test="${ticket.deviceId == requestScope.doorLock.deviceId}">
-																	<tr onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'" style="cursor: pointer;">
+																<c:when
+																	test="${ticket.deviceId == requestScope.doorLock.deviceId}">
+																	<tr
+																		onclick="document.location='TicketDetail?id=<c:out value="${ticket.id}"></c:out>'"
+																		style="cursor: pointer;">
 																		<td><c:out value="${ticket.id}"></c:out></td>
 																		<td><c:out value="${ticket.name}"></c:out></td>
-																		<c:forEach items="${ticketStatusList}" var="ticketStatus">
+																		<c:forEach items="${ticketStatusList}"
+																			var="ticketStatus">
 																			<c:choose>
-																				<c:when test="${fn:containsIgnoreCase(ticketStatus, ticket.ticketStatus)}">
+																				<c:when
+																					test="${fn:containsIgnoreCase(ticketStatus, ticket.ticketStatus)}">
 																					<td><c:out value="${ticketStatus}"></c:out></td>
 																				</c:when>
 																			</c:choose>
-																  		</c:forEach>
-																  		<td><c:out value="${ticket.user.name}"></c:out></td>
+																		</c:forEach>
+																		<td><c:out value="${ticket.user.name}"></c:out></td>
 																	</tr>
 																</c:when>
 															</c:choose>
 														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
+													</tbody>
+												</table>
 
 											</div>
 
@@ -426,21 +479,25 @@
 
 						</div>
 
-						<div class="line visible-xs-block"></div>
-
 					</div>
+
+					<div class="line visible-xs-block"></div>
 
 				</div>
 
 			</div>
 
-		</section><!-- #content end -->
+		</div>
+
+		</section>
+		<!-- #content end -->
 
 		<!-- Footer
 		============================================= -->
 		<!-- #footer end -->
 
-	</div><!-- #wrapper end -->
+	</div>
+	<!-- #wrapper end -->
 
 	<!-- Go To Top
 	============================================= -->
@@ -450,7 +507,7 @@
 	============================================= -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/plugins.js"></script>
-	
+
 	<!-- Bootstrap Data Table Plugin -->
 	<script type="text/javascript" src="js/components/bs-datatable.js"></script>
 
@@ -476,7 +533,7 @@
 			});
 		});
 	</script>
-	
+
 	<script>
 
 		$(document).ready(function() {
@@ -484,7 +541,7 @@
 		});
 
 	</script>
-	
+
 	<script>
 		jQuery( "#tabs-profile" ).on( "tabsactivate", function( event, ui ) {
 			jQuery( '.flexslider .slide' ).resize();

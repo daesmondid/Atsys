@@ -1,5 +1,4 @@
 /* Common styles */
-
 .pricing {
 	display: -webkit-flex;
 	display: flex;
@@ -47,7 +46,8 @@
 	cursor: default;
 	border-radius: 10px;
 	background: #1F1F1F;
-	box-shadow: 0 5px 20px rgba(0,0,0,0.05), 0 15px 30px -10px rgba(0,0,0,0.3);
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px
+		rgba(0, 0, 0, 0.3);
 	-webkit-transition: background 0.3s;
 	transition: background 0.3s;
 }
@@ -89,8 +89,8 @@
 	transition: background 0.3s;
 }
 
-.pricing--sonam .pricing--action:hover,
-.pricing--sonam .pricing--action:focus {
+.pricing--sonam .pricing--action:hover, .pricing--sonam .pricing--action:focus
+	{
 	background: #BD3C3C;
 }
 
@@ -182,8 +182,8 @@
 	transform: translate3d(0, 0, 0);
 }
 
-.pricing--jinpa .pricing--action:hover,
-.pricing--jinpa .pricing--action:focus {
+.pricing--jinpa .pricing--action:hover, .pricing--jinpa .pricing--action:focus
+	{
 	background: #6EA76B;
 }
 
@@ -259,8 +259,8 @@
 	transition: background-color 0.3s;
 }
 
-.pricing--tenzin .pricing--action:hover,
-.pricing--tenzin .pricing--action:focus {
+.pricing--tenzin .pricing--action:hover, .pricing--tenzin .pricing--action:focus
+	{
 	background-color: #3b5ac5;
 }
 
@@ -322,14 +322,14 @@
 	background: #141315;
 	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
 	transition: transform 0.3s, opacity 0.3s;
-	-webkit-transform: translate3d(-150%,0,0) skewX(40deg);
-	transform: translate3d(-150%,0,0) skewX(40deg);
+	-webkit-transform: translate3d(-150%, 0, 0) skewX(40deg);
+	transform: translate3d(-150%, 0, 0) skewX(40deg);
 }
 
 .pricing--yama .pricing--item:hover .pricing--price::before {
 	opacity: 1;
-	-webkit-transform: translate3d(0,0,0) skewX(0deg);
-	transform: translate3d(0,0,0) skewX(0deg);
+	-webkit-transform: translate3d(0, 0, 0) skewX(0deg);
+	transform: translate3d(0, 0, 0) skewX(0deg);
 }
 
 .pricing--yama .pricing--period {
@@ -357,8 +357,8 @@
 	transition: background-color 0.3s, color 0.3s;
 }
 
-.pricing--yama .pricing--action:hover,
-.pricing--yama .pricing--action:focus {
+.pricing--yama .pricing--action:hover, .pricing--yama .pricing--action:focus
+	{
 	color: #ef7d46;
 	background: #fff;
 }
@@ -427,20 +427,138 @@
 	animation-delay: 0.05s;
 }
 
-@-webkit-keyframes moveUp {
-	50% { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
-	51% { opacity: 0; -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
-	52% { opacity: 1; -webkit-transform: translate3d(0,100%,0); transform: translate3d(0,100%,0); }
-	100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+@
+-webkit-keyframes moveUp { 50% {
+	-webkit-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
 }
 
-@keyframes moveUp {
-	50% { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
-	51% { opacity: 0; -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
-	52% { opacity: 1; -webkit-transform: translate3d(0,100%,0); transform: translate3d(0,100%,0); }
-	100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+51%
+{
+opacity
+:
+ 
+0;
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+-100%,0);
+transform
+:
+ 
+translate3d
+(0
+,
+-100%,0);
+}
+52%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+100%,0);
+transform
+:
+ 
+translate3d
+(0
+,
+100%,0);
+}
+100%
+{
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+0,0);
+transform
+:
+ 
+translate3d
+(0
+,
+0,0);
+}
+}
+@
+keyframes moveUp { 50% {
+	-webkit-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
 }
 
+51%
+{
+opacity
+:
+ 
+0;
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+-100%,0);
+transform
+:
+ 
+translate3d
+(0
+,
+-100%,0);
+}
+52%
+{
+opacity
+:
+ 
+1;
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+100%,0);
+transform
+:
+ 
+translate3d
+(0
+,
+100%,0);
+}
+100%
+{
+-webkit-transform
+:
+ 
+translate3d
+(0
+,
+0,0);
+transform
+:
+ 
+translate3d
+(0
+,
+0,0);
+}
+}
 .pricing--rabten .pricing--sentence {
 	font-weight: bold;
 	margin: 0 0 1em 0;
@@ -468,8 +586,8 @@
 	transition: background-color 0.3s;
 }
 
-.pricing--rabten .pricing--action:hover,
-.pricing--rabten .pricing--action:focus {
+.pricing--rabten .pricing--action:hover, .pricing--rabten .pricing--action:focus
+	{
 	background-color: #C53737;
 }
 
@@ -492,7 +610,7 @@
 	background: #fff;
 	cursor: default;
 	overflow: hidden;
-	box-shadow: 0 0 15px rgba(0,0,0,0.05);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (min-width: 66.250em) {
@@ -571,8 +689,8 @@
 	letter-spacing: 2px;
 }
 
-.pricing--pema .pricing--action:hover,
-.pricing--pema .pricing--action:focus {
+.pricing--pema .pricing--action:hover, .pricing--pema .pricing--action:focus
+	{
 	background-color: #4F5F56;
 }
 
@@ -613,7 +731,8 @@
 }
 
 .pricing--karma .pricing--item--featured .pricing--price::after {
-	background: url('http://tympanus.net/Development/PricingTablesInspiration/img/stamp.png');
+	background:
+		url('http://tympanus.net/Development/PricingTablesInspiration/img/stamp.png');
 	background-size: cover;
 	content: '';
 	position: absolute;
@@ -668,8 +787,8 @@
 	transition: background-color 0.3s, color 0.3s;
 }
 
-.pricing--karma .pricing--action:hover,
-.pricing--karma .pricing--action:focus {
+.pricing--karma .pricing--action:hover, .pricing--karma .pricing--action:focus
+	{
 	background-color: #ffdbd5;
 	color: #382628;
 }
@@ -680,16 +799,16 @@
 	color: #fff;
 	cursor: default;
 	font-family: 'Myriad Pro', Arial, sans-serif;
-	border: 1px solid rgba(255,255,255,0.4);
-	background: rgba(255,255,255,0.08);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	background: rgba(255, 255, 255, 0.08);
 	border-radius: 10px;
 	-webkit-transition: border-color 0.3s, background 0.3s;
 	transition: border-color 0.3s, background 0.3s;
 }
 
 .pricing--norbu .pricing--item:hover {
-	border: 1px solid rgba(255,255,255,1);
-	background: rgba(255,255,255,0.18);
+	border: 1px solid rgba(255, 255, 255, 1);
+	background: rgba(255, 255, 255, 0.18);
 }
 
 .pricing--norbu .pricing--title {
@@ -766,7 +885,7 @@
 	margin: auto 1em 1em;
 	padding: 1.25em 2em;
 	color: #4aa8e4;
-	background: rgba(255,255,255,0.7);
+	background: rgba(255, 255, 255, 0.7);
 	border-radius: 5px;
 	-webkit-transition: background 0.3s;
 	transition: background 0.3s;
@@ -774,8 +893,8 @@
 	letter-spacing: 2px;
 }
 
-.pricing--norbu .pricing--action:hover,
-.pricing--norbu .pricing--action:focus {
+.pricing--norbu .pricing--action:hover, .pricing--norbu .pricing--action:focus
+	{
 	background: #fff;
 }
 
@@ -788,7 +907,9 @@
 	font-weight: bold;
 	font-size: 1.8em;
 	padding: 0 0 0.5em;
-	background: url('http://tympanus.net/Development/PricingTablesInspiration/img/line.png') no-repeat 50% 100%;
+	background:
+		url('http://tympanus.net/Development/PricingTablesInspiration/img/line.png')
+		no-repeat 50% 100%;
 }
 
 .pricing--dawa .pricing--price {
@@ -829,15 +950,15 @@
 	transition: all 0.4s ease;
 }
 
-.pricing--dawa .pricing--action:hover,
-.pricing--dawa .pricing--action:focus {
+.pricing--dawa .pricing--action:hover, .pricing--dawa .pricing--action:focus
+	{
 	color: #000;
 	background-color: #F5F5F5
 }
 
 @media screen and (max-width: 40em) {
 	.pricing--dawa .pricing--item {
-		border: 1px solid rgba(255,255,255,0.6);
+		border: 1px solid rgba(255, 255, 255, 0.6);
 		margin: 1em;
 	}
 }
@@ -927,13 +1048,13 @@
 	padding: 1em 2em;
 	border-radius: 40px;
 	background: #85c34a;
-	color: ;
+	color:;
 	-webkit-transition: background-color 0.3s, color 0.3s;
 	transition: background-color 0.3s, color 0.3s;
 }
 
-.pricing--yonten .pricing--action:hover,
-.pricing--yonten .pricing--action:focus {
+.pricing--yonten .pricing--action:hover, .pricing--yonten .pricing--action:focus
+	{
 	color: #85c34a;
 	background: #fff;
 }
@@ -1036,8 +1157,8 @@
 	background: #7E5AE2;
 }
 
-.pricing--tashi .pricing--action:hover,
-.pricing--tashi .pricing--action:focus {
+.pricing--tashi .pricing--action:hover, .pricing--tashi .pricing--action:focus
+	{
 	background: #1A1F28 !important;
 }
 
@@ -1096,13 +1217,13 @@
 }
 
 .pricing--palden .pricing--item:hover .deco-layer--1 {
-	-webkit-transform: translate3d(15px,0,0);
-	transform: translate3d(15px,0,0);
+	-webkit-transform: translate3d(15px, 0, 0);
+	transform: translate3d(15px, 0, 0);
 }
 
 .pricing--palden .pricing--item:hover .deco-layer--2 {
-	-webkit-transform: translate3d(-15px,0,0);
-	transform: translate3d(-15px,0,0);
+	-webkit-transform: translate3d(-15px, 0, 0);
+	transform: translate3d(-15px, 0, 0);
 }
 
 .pricing--palden .icon {
@@ -1121,13 +1242,13 @@
 .pricing--palden .pricing--currency {
 	font-size: 0.15em;
 	vertical-align: top;
-	color: rgba(0,0,0,0.4);
+	color: rgba(0, 0, 0, 0.4);
 }
 
 .pricing--palden .pricing--period {
 	font-size: 0.15em;
 	padding: 0 0 0 0.5em;
-	color: rgba(0,0,0,0.4);
+	color: rgba(0, 0, 0, 0.4);
 	font-style: italic;
 }
 
@@ -1159,7 +1280,7 @@
 	transition: background-color 0.3s;
 }
 
-.pricing--palden .pricing--action:hover,
-.pricing--palden .pricing--action:focus {
+.pricing--palden .pricing--action:hover, .pricing--palden .pricing--action:focus
+	{
 	background-color: #f38747;
 }
