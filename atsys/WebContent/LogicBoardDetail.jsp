@@ -184,7 +184,77 @@
 
 			<div class="container clearfix">
 				<h1>Logic Board Detail</h1>
-				<a href="#" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
+				<!-- Modal Contact Form
+				============================================= -->
+				<a href="#" data-toggle="modal" data-target="#contactFormModal" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
+
+				<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="contactFormModalLabel">Edit Logic Board</h4>
+							</div>
+							<div class="modal-body">
+
+								<div class="contact-widget">
+									<div class="contact-form-result"></div>
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="LogicBoardEditProcess?id=${requestScope.logicBoard.id}" method="post">
+
+										<div class="form-process"></div>
+
+										<div class="col_full">
+											<label for="template-contactform-name">Name <small>*</small></label>
+											<input type="text" id="template-contactform-name" name="name" value="${requestScope.logicBoard.name}" class="required sm-form-control" />
+										</div>
+
+										<div class="clear"></div>
+
+										<div class="col_half">
+											<label for="template-contactform-user">User <small>*</small></label>
+											<select id="template-contactform-user" name="userId" class="required sm-form-control" style="height: 40px;">
+												<option value="">-- Select One --</option>
+												<c:forEach items="${userList}" var="user">
+													<c:choose>
+														<c:when test="${user.id == requestScope.logicBoard.user.id}">
+															<option value="${user.id}" selected>${user.name}</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${user.id}">${user.name}</option>
+														</c:otherwise>
+													</c:choose>
+										  		</c:forEach>
+											</select>
+										</div>
+										
+										<div class="col_half col_last">
+											<label for="template-contactform-ip">IP Address <small>*</small></label>
+											<input type="text" id="template-contactform-ip" name="address" value="${requestScope.logicBoard.address}" class="required sm-form-control" />
+										</div>
+
+										<div class="clear"></div>
+
+										<div class="col_full hidden">
+											<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+										</div>
+
+										<div class="col_full">
+											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Save</button>
+										</div>
+
+									</form>
+
+								</div>
+
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<!-- Modal Contact Form End -->
 				<a href="LogicBoardDelete?id=${requestScope.logicBoard.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
 					<li><a href="#">Home</a></li>
@@ -224,12 +294,6 @@
 
 										<ul class="tab-nav clearfix">
 											<li><a href="#tab-feeds"><i class="icon-desktop"></i> General</a></li>
-											<li><a href="#tab-lighting"><i class="icon-phone3"></i> Lighting</a></li>
-											<li><a href="#tab-doorLock"><i class="icon-phone3"></i> Door Lock</a></li>
-											<li><a href="#tab-climate"><i class="icon-phone3"></i> Climate</a></li>
-											<li><a href="#tab-appliances"><i class="icon-phone3"></i> Appliances</a></li>
-											<li><a href="#tab-garageDoor"><i class="icon-phone3"></i> Garage Door</a></li>
-											<li><a href="#tab-audioSystem"><i class="icon-phone3"></i> Audio System</a></li>
 										</ul>
 
 										<div class="tab-container">
@@ -262,266 +326,6 @@
 													  </tbody>
 													</table>
 												  </div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-lighting">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Intensity</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Intensity</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${lightingList}" var="lighting">
-															<tr onclick="document.location='LightingDetail?id=<c:out value="${lighting.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${lighting.id}"></c:out></td>
-																<td><c:out value="${lighting.name}"></c:out></td>
-																<td><c:out value="${lighting.intensity}"></c:out></td>
-																<td><c:out value="${lighting.deviceId}"></c:out></td>
-																<td><c:out value="${lighting.logicBoard.id}"></c:out></td>
-																<td><c:out value="${lighting.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-													</table>
-							
-												</div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-doorLock">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Lock Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Lock Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${doorLockList}" var="doorLock">
-															<tr onclick="document.location='DoorLockDetail?id=<c:out value="${doorLock.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${doorLock.id}"></c:out></td>
-																<td><c:out value="${doorLock.name}"></c:out></td>
-																<td><c:out value="${doorLock.lockStatus}"></c:out></td>
-																<td><c:out value="${doorLock.deviceId}"></c:out></td>
-																<td><c:out value="${doorLock.logicBoard.id}"></c:out></td>
-																<td><c:out value="${doorLock.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-climate">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Temperature</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Temperature</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${climateList}" var="climate">
-															<tr onclick="document.location='ClimateDetail?id=<c:out value="${climate.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${climate.id}"></c:out></td>
-																<td><c:out value="${climate.name}"></c:out></td>
-																<td><c:out value="${climate.powerStatus}"></c:out></td>
-																<td><c:out value="${climate.deviceId}"></c:out></td>
-																<td><c:out value="${climate.temperature}"></c:out></td>
-																<td><c:out value="${climate.logicBoard.id}"></c:out></td>
-																<td><c:out value="${climate.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-appliances">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${appliancesList}" var="appliances">
-															<tr onclick="document.location='AppliancesDetail?id=<c:out value="${appliances.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${appliances.id}"></c:out></td>
-																<td><c:out value="${appliances.name}"></c:out></td>
-																<td><c:out value="${appliances.powerStatus}"></c:out></td>
-																<td><c:out value="${appliances.deviceId}"></c:out></td>
-																<td><c:out value="${appliances.logicBoard.id}"></c:out></td>
-																<td><c:out value="${appliances.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-garageDoor">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Door Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Door Status</th>
-																<th>Device ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${garageDoorList}" var="garageDoor">
-															<tr onclick="document.location='GarageDoorDetail?id=<c:out value="${garageDoor.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${garageDoor.id}"></c:out></td>
-															<td><c:out value="${garageDoor.name}"></c:out></td>
-															<td><c:out value="${garageDoor.doorStatus}"></c:out></td>
-															<td><c:out value="${garageDoor.deviceId}"></c:out></td>
-															<td><c:out value="${garageDoor.logicBoard.id}"></c:out></td>
-															<td><c:out value="${garageDoor.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
-
-											</div>
-											<div class="tab-content clearfix" id="tab-audioSystem">
-
-												<div class="table-responsive">
-							
-													<table id="datatable1" class="table table-striped table-bordered" cellspacing="0" width="100%">
-														<thead>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Volume Level</th>
-																<th>Music ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</thead>
-														<tfoot>
-															<tr>
-																<th>ID</th>
-																<th>Name</th>
-																<th>Power Status</th>
-																<th>Device ID</th>
-																<th>Volume Level</th>
-																<th>Music ID</th>
-																<th>Logic Board ID</th>
-																<th>Pin</th>
-															</tr>
-														</tfoot>
-														<tbody>
-														<c:forEach items="${audioSystemList}" var="audioSystem">
-															<tr onclick="document.location='AudioSystemDetail?id=<c:out value="${audioSystem.id}"></c:out>'" style="cursor: pointer;">
-																<td><c:out value="${audioSystem.id}"></c:out></td>
-																<td><c:out value="${audioSystem.name}"></c:out></td>
-																<td><c:out value="${audioSystem.powerStatus}"></c:out></td>
-																<td><c:out value="${audioSystem.deviceId}"></c:out></td>
-																<td><c:out value="${audioSystem.volumeLevel}"></c:out></td>
-																<td><c:out value="${audioSystem.musicId}"></c:out></td>
-																<td><c:out value="${audioSystem.logicBoard.id}"></c:out></td>
-																<td><c:out value="${audioSystem.pin}"></c:out></td>
-															</tr>
-														</c:forEach>
-														</tbody>
-													</table>
-							
-												</div>
 
 											</div>
 

@@ -1,28 +1,27 @@
 package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import enumerations.UserType;
-
+import enumerations.ConnectionStatus;
+import models.User;
+import utils.AtsysDefaultUtil;
 
 /**
- * Servlet implementation class LoginProcess
+ * Servlet implementation class LogicBoardEditProcess
  */
-@WebServlet("/LoginProcess")
-public class LoginProcess extends HttpServlet {
+@WebServlet("/LogicBoardEditProcess")
+public class LogicBoardEditProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginProcess() {
+    public LogicBoardEditProcess() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +30,19 @@ public class LoginProcess extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		AtsysDefaultUtil.validateLogin(request, response);
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		ConnectionStatus connectionStatus = ConnectionStatus.UNKNOWN;
+		User user = new dao.User().get(Integer.parseInt(request.getParameter("userId")));
 		
-		if (new dao.User().countUserMatch(username, password) == 1) {
-			
-			HttpSession session = request.getSession();
-			models.User user = new dao.User().get(username, password);
-		    session.setAttribute("user", user);
-		    if (user.getUserType() == UserType.NORMAL) {
-		    	response.sendRedirect("Dashboard");
-		    }
-		    else if (user.getUserType() == UserType.ADMIN) {
-		    	response.sendRedirect("User");
-		    }
-			
-		}
-		else {
-			
-			response.getWriter().append("Username Not Found");
-			
-		}
+		new dao.LogicBoard().edit(new models.LogicBoard(id, name, address, connectionStatus, user));
 		
+		response.getWriter().append("{ \"alert\": \"success\", \"message\": \"Logic Board Successfully Updated\" }");
+		//response.sendRedirect("LogicBoard");
 	}
 
 	/**

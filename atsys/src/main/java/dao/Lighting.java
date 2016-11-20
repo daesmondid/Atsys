@@ -113,5 +113,26 @@ public class Lighting extends DaoBase {
         return lighting;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.Lighting lighting = (models.Lighting) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update lighting set name = '"+lighting.getName()+"', pin = "+lighting.getPin()+", logic_board_id = "+lighting.getLogicBoard().getId()+" where id = "+lighting.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -199,7 +200,7 @@
 
 								<div class="contact-widget">
 									<div class="contact-form-result"></div>
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="UserEditProcess" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="UserEditProcess?id=${requestScope.user.id}" method="post">
 
 										<div class="form-process"></div>
 
@@ -212,10 +213,9 @@
 											<label for="template-contactform-usertype">User Type <small>*</small></label>
 											<select id="template-contactform-usertype" name="userType" class="required sm-form-control" style="height: 40px;">
 												<option value="">-- Select One --</option>
-												<option value="">-- Select One --${requestScope.user.userType.toLowerCase()}</option>
 												<c:forEach items="${userTypeList}" var="userType">
 													<c:choose>
-														<c:when test="${userType.toLowerCase().contains(requestScope.user.userType.toLowerCase())}">
+														<c:when test="${fn:containsIgnoreCase(userType, requestScope.user.userType)}">
 															<option value="${userType}" selected>${userType}</option>
 														</c:when>
 														<c:otherwise>

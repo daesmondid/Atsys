@@ -81,8 +81,8 @@ public final class AtsysDefaultUtil {
 	public static HashMap<String, TicketStatus> getStringTicketStatusMap() {
 		
 		HashMap<String, TicketStatus> hashMap = new HashMap<String, TicketStatus>();
-		hashMap.put("Awaiting Admin Reply", TicketStatus.AWAITINGADMIN);
-		hashMap.put("Awaiting User Reply", TicketStatus.AWAITINGUSER);
+		hashMap.put("Awaiting Admin Reply", TicketStatus.ADMIN);
+		hashMap.put("Awaiting User Reply", TicketStatus.USER);
 		hashMap.put("Closed", TicketStatus.CLOSED);
 		
 		return hashMap;
@@ -92,8 +92,8 @@ public final class AtsysDefaultUtil {
 	public static HashMap<Integer, TicketStatus> getIntTicketStatusMap() {
 		
 		HashMap<Integer, TicketStatus> hashMap = new HashMap<Integer, TicketStatus>();
-		hashMap.put(1, TicketStatus.AWAITINGADMIN);
-		hashMap.put(2, TicketStatus.AWAITINGUSER);
+		hashMap.put(1, TicketStatus.ADMIN);
+		hashMap.put(2, TicketStatus.USER);
 		hashMap.put(3, TicketStatus.CLOSED);
 		
 		return hashMap;
@@ -103,8 +103,8 @@ public final class AtsysDefaultUtil {
 	public static HashMap<TicketStatus, Integer> getTicketStatusMap() {
 		
 		HashMap<TicketStatus, Integer> hashMap = new HashMap<TicketStatus, Integer>();
-		hashMap.put(TicketStatus.AWAITINGADMIN, 1);
-		hashMap.put(TicketStatus.AWAITINGUSER, 2);
+		hashMap.put(TicketStatus.ADMIN, 1);
+		hashMap.put(TicketStatus.USER, 2);
 		hashMap.put(TicketStatus.CLOSED, 3);
 		
 		return hashMap;
@@ -115,8 +115,8 @@ public final class AtsysDefaultUtil {
 		
 		HashMap<String, PowerStatus> hashMap = new HashMap<String, PowerStatus>();
 		hashMap.put("Unknown", PowerStatus.UNKNOWN);
-		hashMap.put("Powered On", PowerStatus.OFF);
-		hashMap.put("Powered Off", PowerStatus.ON);
+		hashMap.put("Powered Off", PowerStatus.OFF);
+		hashMap.put("Powered On", PowerStatus.ON);
 		
 		return hashMap;
 		
@@ -213,7 +213,7 @@ public final class AtsysDefaultUtil {
 	public static HashMap<String, UserType> getStringUserTypeMap() {
 		
 		HashMap<String, UserType> hashMap = new HashMap<String, UserType>();
-		hashMap.put("Standard User", UserType.NORMAL);
+		hashMap.put("Normal User", UserType.NORMAL);
 		hashMap.put("Administrator", UserType.ADMIN);
 		
 		return hashMap;

@@ -199,7 +199,7 @@
 
 								<div class="contact-widget">
 									<div class="contact-form-result"></div>
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="GarageDoorEditProcess" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="GarageDoorEditProcess?id=${requestScope.garageDoor.id}" method="post">
 
 										<div class="form-process"></div>
 

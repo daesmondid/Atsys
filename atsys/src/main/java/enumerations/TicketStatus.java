@@ -2,6 +2,6 @@ package enumerations;
 
 public enum TicketStatus {
 	
-	AWAITINGADMIN, AWAITINGUSER, CLOSED
+	ADMIN, USER, CLOSED
 
 }

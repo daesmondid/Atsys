@@ -115,5 +115,26 @@ public class Appliances extends DaoBase {
         return appliances;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.Appliances appliances = (models.Appliances) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update appliances set name = '"+appliances.getName()+"', pin = "+appliances.getPin()+", logic_board_id = "+appliances.getLogicBoard().getId()+" where id = "+appliances.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+    	
+	}
 	
 }

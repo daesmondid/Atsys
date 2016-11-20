@@ -1,28 +1,26 @@
-package servlets;
+package servletDevices;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import enumerations.UserType;
-
+import models.LogicBoard;
+import utils.AtsysDefaultUtil;
 
 /**
- * Servlet implementation class LoginProcess
+ * Servlet implementation class LightingEditProcess
  */
-@WebServlet("/LoginProcess")
-public class LoginProcess extends HttpServlet {
+@WebServlet("/LightingEditProcess")
+public class LightingEditProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginProcess() {
+    public LightingEditProcess() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +29,20 @@ public class LoginProcess extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+    	AtsysDefaultUtil.validateLogin(request, response);
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+    	int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String deviceId = "N/A";
+		int pin = Integer.parseInt(request.getParameter("pin"));
+		LogicBoard logicBoard = new dao.LogicBoard().get(Integer.parseInt(request.getParameter("logicBoardId")));
+		int intensity = 0;
 		
-		if (new dao.User().countUserMatch(username, password) == 1) {
-			
-			HttpSession session = request.getSession();
-			models.User user = new dao.User().get(username, password);
-		    session.setAttribute("user", user);
-		    if (user.getUserType() == UserType.NORMAL) {
-		    	response.sendRedirect("Dashboard");
-		    }
-		    else if (user.getUserType() == UserType.ADMIN) {
-		    	response.sendRedirect("User");
-		    }
-			
-		}
-		else {
-			
-			response.getWriter().append("Username Not Found");
-			
-		}
+		new dao.Lighting().edit(new models.Lighting(id, name, deviceId, pin, logicBoard, intensity));
 		
+		response.getWriter().append("{ \"alert\": \"success\", \"message\": \"Device Successfully Updated\" }");
+		//response.sendRedirect("Lighting");
 	}
 
 	/**

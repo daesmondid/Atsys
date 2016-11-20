@@ -115,5 +115,26 @@ public class DoorLock extends DaoBase {
         return doorLock;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.DoorLock doorLock = (models.DoorLock) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update door_lock set name = '"+doorLock.getName()+"', pin = "+doorLock.getPin()+", logic_board_id = "+doorLock.getLogicBoard().getId()+" where id = "+doorLock.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

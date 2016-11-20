@@ -1,28 +1,27 @@
 package servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import enumerations.UserType;
-
+import enumerations.TicketStatus;
+import models.User;
+import utils.AtsysDefaultUtil;
 
 /**
- * Servlet implementation class LoginProcess
+ * Servlet implementation class TicketEditProcess
  */
-@WebServlet("/LoginProcess")
-public class LoginProcess extends HttpServlet {
+@WebServlet("/TicketEditProcess")
+public class TicketEditProcess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginProcess() {
+    public TicketEditProcess() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +30,19 @@ public class LoginProcess extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		AtsysDefaultUtil.validateLogin(request, response);
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		TicketStatus ticketStatus = AtsysDefaultUtil.getStringTicketStatusMap().get(request.getParameter("ticketStatus"));
+		User user = null;
+		String deviceId = request.getParameter("deviceId");
 		
-		if (new dao.User().countUserMatch(username, password) == 1) {
-			
-			HttpSession session = request.getSession();
-			models.User user = new dao.User().get(username, password);
-		    session.setAttribute("user", user);
-		    if (user.getUserType() == UserType.NORMAL) {
-		    	response.sendRedirect("Dashboard");
-		    }
-		    else if (user.getUserType() == UserType.ADMIN) {
-		    	response.sendRedirect("User");
-		    }
-			
-		}
-		else {
-			
-			response.getWriter().append("Username Not Found");
-			
-		}
+		new dao.Ticket().edit(new models.Ticket(id, name, ticketStatus, user, deviceId));
 		
+		response.getWriter().append("{ \"alert\": \"success\", \"message\": \"Ticket Successfully Updated\" }");
+		//response.sendRedirect("Ticket");
 	}
 
 	/**

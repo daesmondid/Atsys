@@ -45,23 +45,19 @@ public class UserAddProcess extends HttpServlet {
 		
 		if (password.equals(passwordver)) {
 			
-			try {
-				if (new dao.User().countUserMatch(username, password) == 1) {
-					
-					response.getWriter().append("{ \"alert\": \"error\", \"message\": \"Email address exist\" }");
-					//response.sendRedirect("User");
-					
-				}
-				else {
-					
-					new dao.User().add(new models.User(id, name, username, password, userType, address, email, mobilePhone, homePhone));
-					
-					response.getWriter().append("{ \"alert\": \"success\", \"message\": \"User Successfully Added\" }");
-					//response.sendRedirect("User");
-					
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			if (new dao.User().countUserMatch(username, password) == 1) {
+				
+				response.getWriter().append("{ \"alert\": \"error\", \"message\": \"Email address exist\" }");
+				//response.sendRedirect("User");
+				
+			}
+			else {
+				
+				new dao.User().add(new models.User(id, name, username, password, userType, address, email, mobilePhone, homePhone));
+				
+				response.getWriter().append("{ \"alert\": \"success\", \"message\": \"User Successfully Added\" }");
+				//response.sendRedirect("User");
+				
 			}
 			
 		}

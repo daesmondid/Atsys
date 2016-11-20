@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -184,7 +185,98 @@
 
 			<div class="container clearfix">
 				<h1>Ticket Detail</h1>
-				<a href="#" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
+				<!-- Modal Contact Form
+				============================================= -->
+				<a href="#" data-toggle="modal" data-target="#contactFormModal" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important; margin-right: 5px !important;">Edit</a>
+
+				<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="contactFormModalLabel">Edit Ticket</h4>
+							</div>
+							<div class="modal-body">
+
+								<div class="contact-widget">
+									<div class="contact-form-result"></div>
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="TicketEditProcess?id=${requestScope.ticket.id}" method="post">
+
+										<div class="form-process"></div>
+
+										<div class="col_full">
+											<label for="template-contactform-name">Subject <small>*</small></label>
+											<input type="text" id="template-contactform-name" name="name" value="${requestScope.ticket.name}" class="required sm-form-control" />
+										</div>
+
+										<div class="clear"></div>
+										
+										<div class="col_full">
+											<label for="template-contactform-user">User <small>*</small></label>
+											<select id="template-contactform-user" name="userId" class="required sm-form-control" style="height: 40px;" disabled>
+												<option value="${requestScope.ticket.user.id}">${requestScope.ticket.user.name}</option>
+											</select>
+										</div>
+
+										<div class="clear"></div>
+
+										<div class="col_one_third">
+											<label for="template-contactform-status">Ticket Status <small>*</small></label>
+											<select id="template-contactform-status" name="ticketStatus" class="required sm-form-control" style="height: 40px;">
+												<option value="">-- Select One --</option>
+												<c:forEach items="${ticketStatusList}" var="ticketStatus">
+													<c:choose>
+														<c:when test="${fn:containsIgnoreCase(ticketStatus, requestScope.ticket.ticketStatus)}">
+															<option value="${ticketStatus}" selected>${ticketStatus}</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${ticketStatus}">${ticketStatus}</option>
+														</c:otherwise>
+													</c:choose>
+										  		</c:forEach>
+											</select>
+										</div>
+										
+										<div class="col_two_third col_last">
+											<label for="template-contactform-device">Related Device</label>
+											<select id="template-contactform-device" name="deviceId" class="sm-form-control" style="height: 40px;">
+												<option value="">-- Select One --</option>
+												<c:forEach items="${deviceList}" var="device">
+													<c:choose>
+														<c:when test="${device.deviceId == requestScope.ticket.deviceId}">
+															<option value="${device.deviceId}" selected>${device.deviceId}</option>
+														</c:when>
+														<c:otherwise>
+															<option value="${device.deviceId}">${device.deviceId}</option>
+														</c:otherwise>
+													</c:choose>
+										  		</c:forEach>
+											</select>
+										</div>
+
+										<div class="clear"></div>
+
+										<div class="col_full hidden">
+											<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+										</div>
+
+										<div class="col_full">
+											<button class="button button-3d nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Save</button>
+										</div>
+
+									</form>
+
+								</div>
+
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				<!-- Modal Contact Form End -->
 				<a href="TicketDelete?id=${requestScope.ticket.id}" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Delete</a>
 				<ol class="breadcrumb">
 					<li><a href="#">Home</a></li>

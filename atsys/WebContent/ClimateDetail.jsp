@@ -199,7 +199,7 @@
 
 								<div class="contact-widget">
 									<div class="contact-form-result"></div>
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="ClimateEditProcess" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="ClimateEditProcess?id=${requestScope.climate.id}" method="post">
 
 										<div class="form-process"></div>
 

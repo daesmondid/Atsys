@@ -115,5 +115,26 @@ public class GarageDoor extends DaoBase {
 		return garageDoor;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.GarageDoor garageDoor = (models.GarageDoor) object;
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update garage_door set name = '"+garageDoor.getName()+"', pin = "+garageDoor.getPin()+", logic_board_id = "+garageDoor.getLogicBoard().getId()+" where id = "+garageDoor.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

@@ -113,5 +113,26 @@ public class LogicBoard extends DaoBase {
 		return logicBoard;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.LogicBoard logicBoard = (models.LogicBoard) object;
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update logic_board set name = '"+logicBoard.getName()+"', address = '"+logicBoard.getAddress()+"', user_id = "+logicBoard.getUser().getId()+" where id = "+logicBoard.getId();
+	    	statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

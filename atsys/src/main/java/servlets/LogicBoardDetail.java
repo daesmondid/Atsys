@@ -44,12 +44,6 @@ public class LogicBoardDetail extends HttpServlet {
 		
 		request.setAttribute("userList", new dao.User().list());
 		request.setAttribute("logicBoard", new dao.LogicBoard().get(id));
-		request.setAttribute("appliancesList", new dao.Appliances().list());
-		request.setAttribute("audioSystemList", new dao.AudioSystem().list());
-		request.setAttribute("climateList", new dao.Climate().list());
-		request.setAttribute("doorLockList", new dao.DoorLock().list());
-		request.setAttribute("garageDoorList", new dao.GarageDoor().list());
-		request.setAttribute("lightingList", new dao.Lighting().list());
 		RequestDispatcher view = request.getRequestDispatcher("/LogicBoardDetail.jsp");
 		view.forward(request, response);
 	}

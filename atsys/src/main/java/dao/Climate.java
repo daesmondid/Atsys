@@ -118,5 +118,26 @@ public class Climate extends DaoBase {
         return climate;
     	
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.Climate climate = (models.Climate) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update climate set name = '"+climate.getName()+"', pin = "+climate.getPin()+", logic_board_id = "+climate.getLogicBoard().getId()+" where id = "+climate.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

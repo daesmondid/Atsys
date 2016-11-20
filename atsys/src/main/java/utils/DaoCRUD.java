@@ -6,7 +6,7 @@ public interface DaoCRUD {
 	
 	public void add(Object object);
 	public void remove(int id);
-	//public abstract void edit();
+	public void edit(Object object);
 	public ArrayList list();
 	public Object get(int id);
 

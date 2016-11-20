@@ -199,7 +199,7 @@
 
 								<div class="contact-widget">
 									<div class="contact-form-result"></div>
-									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="AppliancesEditProcess" method="post">
+									<form class="nobottommargin" id="template-contactform" name="template-contactform" action="AppliancesEditProcess?id=${requestScope.appliances.id}" method="post">
 
 										<div class="form-process"></div>
 

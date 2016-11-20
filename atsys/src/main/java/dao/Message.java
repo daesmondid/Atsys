@@ -110,5 +110,11 @@ public class Message extends DaoBase {
 		return message;
 		
 	}
+
+	@Override
+	public void edit(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

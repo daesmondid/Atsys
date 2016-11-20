@@ -113,5 +113,26 @@ public class Ticket extends DaoBase {
 		return ticket;
         
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.Ticket ticket = (models.Ticket) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update ticket set name = '"+ticket.getName()+"', ticket_status = "+AtsysDefaultUtil.getTicketStatusMap().get(ticket.getTicketStatus())+", device_id = '"+ticket.getDeviceId()+"' where id = "+ticket.getId();
+	    	statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		close();
+		
+	}
 	
 }

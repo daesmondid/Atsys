@@ -119,5 +119,26 @@ public class AudioSystem extends DaoBase {
 		return audioSystem;
     	
 	}
+
+	@Override
+	public void edit(Object object) {
+
+		models.AudioSystem audioSystem = (models.AudioSystem) object;
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update audio_system set name = '"+audioSystem.getName()+"', pin = "+audioSystem.getPin()+", logic_board_id = "+audioSystem.getLogicBoard().getId()+" where id = "+audioSystem.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

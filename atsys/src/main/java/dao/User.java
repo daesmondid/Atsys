@@ -180,5 +180,26 @@ public class User extends DaoBase {
         return counter;
         
     }
+
+	@Override
+	public void edit(Object object) {
+
+		models.User user = (models.User) object;
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update user set name = '"+user.getName()+"', username = '"+user.getUsername()+"', password = '"+user.getPassword()+"', user_type = "+AtsysDefaultUtil.getUserTypeMap().get(user.getUserType())+", address = '"+user.getAddress()+"', email = '"+user.getEmail()+"', mobile_phone = '"+user.getMobilePhone()+"', home_phone = '"+user.getHomePhone()+"' where id = "+user.getId();
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		close();
+		
+	}
 	
 }
