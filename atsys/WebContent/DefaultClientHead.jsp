@@ -25,7 +25,7 @@
 			<nav id="primary-menu">
 	
 			<ul>
-				<li><a href="index.html"><div>Setting</div></a></li>
+				<li><a href="Dashboard"><div>Dashboard</div></a></li>
 				<li><a href="Logout"><div>Logout</div></a></li>
 			</ul>
 	

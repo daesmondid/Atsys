@@ -44,6 +44,8 @@ public class LogicBoardDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		new dao.LogicBoard().get(id).checkConnection();
+		
 		request.setAttribute("ticketList", new dao.Ticket().list());
 		request.setAttribute("connectionStatusList", AtsysDefaultUtil.getStringConnectionStatusMap().keySet());
 		request.setAttribute("userList", new dao.User().list());

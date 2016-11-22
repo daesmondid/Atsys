@@ -186,77 +186,6 @@
 				<h1>Appliances</h1>
 				<!-- Modal Contact Form
 				============================================= -->
-<<<<<<< HEAD
-			<a href="#" data-toggle="modal" data-target="#contactFormModal"
-				class="button button-rounded button-mini nomargin"
-				style="margin-top: 20px !important;">Add</a>
-
-			<div class="modal fade" id="contactFormModal" tabindex="-1"
-				role="dialog" aria-labelledby="contactFormModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="contactFormModalLabel">Add New
-								Appliance Device</h4>
-						</div>
-						<div class="modal-body">
-
-							<div class="contact-widget">
-								<div class="contact-form-result"></div>
-								<form class="nobottommargin" id="template-contactform"
-									name="template-contactform" action="AppliancesAddProcess"
-									method="post">
-
-									<div class="form-process"></div>
-
-									<div class="col_full">
-										<label for="template-contactform-name">Name <small>*</small></label>
-										<input type="text" id="template-contactform-name" name="name"
-											value="" class="required sm-form-control" />
-									</div>
-
-									<div class="clear"></div>
-
-									<div class="col_two_third">
-										<label for="template-contactform-logicboard">Logic
-											Board <small>*</small>
-										</label> <select id="template-contactform-logicboard"
-											name="logicBoardId" class="required sm-form-control"
-											style="height: 40px;">
-											<option value="">-- Select One --</option>
-											<c:forEach items="${logicBoardList}" var="logicBoard">
-												<option value="${logicBoard.id}">${logicBoard.name} (${logicBoard.user.name})</option>
-											</c:forEach>
-										</select>
-									</div>
-
-									<div class="col_one_third col_last">
-										<label for="template-contactform-pin">Board Pin Array
-											<small>*</small>
-										</label> <input type="text" id="template-contactform-pin" name="pin"
-											value="" class="required sm-form-control" />
-									</div>
-
-									<div class="clear"></div>
-
-									<div class="col_full hidden">
-										<input type="text" id="template-contactform-botcheck"
-											name="template-contactform-botcheck" value=""
-											class="sm-form-control" />
-									</div>
-
-									<div class="col_full">
-										<button class="button button-3d nomargin" type="submit"
-											id="template-contactform-submit"
-											name="template-contactform-submit" value="submit">Save</button>
-									</div>
-
-								</form>
-
-=======
 				<a href="#" data-toggle="modal" data-target="#contactFormModal" class="button button-rounded button-mini nomargin" style="margin-top: 20px !important;">Add</a>
 
 				<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
@@ -265,7 +194,6 @@
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								<h4 class="modal-title" id="contactFormModalLabel">Add New Appliance Device</h4>
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
 							</div>
 							<div class="modal-body">
 
@@ -287,7 +215,7 @@
 											<select id="template-contactform-logicboard" name="logicBoardId" class="required sm-form-control" style="height: 40px;">
 												<option value="">-- Select One --</option>
 												<c:forEach items="${logicBoardList}" var="logicBoard">
-										  			<option value="${logicBoard.id}">${logicBoard.id}</option>
+										  			<option value="${logicBoard.id}">${logicBoard.name} (${logicBoard.user.name})</option>
 										  		</c:forEach>
 											</select>
 										</div>

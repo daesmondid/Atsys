@@ -359,7 +359,7 @@
 														  <c:forEach items="${connectionStatusList}" var="connectionStatus">
 															  <c:choose>
 																  <c:when test="${fn:containsIgnoreCase(connectionStatus, requestScope.climate.logicBoard.connectionStatus)}">
-																	  <td>${connectionStatus}</td>
+																	 <td>${connectionStatus}</td>
 																  </c:when>
 															  </c:choose>
 												  		  </c:forEach>

@@ -292,7 +292,14 @@
 									<c:forEach items="${connectionStatusList}" var="connectionStatus">
 										<c:choose>
 											<c:when test="${fn:containsIgnoreCase(connectionStatus, logicBoard.connectionStatus)}">
-												<td><c:out value="${connectionStatus}"></c:out></td>
+												<c:choose>
+													<c:when test="${connectionStatus == 'Online'}">
+													    <td style="color: #5cb85c !important;"><c:out value="${connectionStatus}"></c:out></td>
+												    </c:when>
+												    <c:otherwise>
+													    <td><c:out value="${connectionStatus}"></c:out></td>
+												    </c:otherwise>
+											    </c:choose>
 											</c:when>
 										</c:choose>
 							  		</c:forEach>

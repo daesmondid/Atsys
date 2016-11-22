@@ -136,5 +136,23 @@ public class Appliances extends DaoBase {
 		close();
     	
 	}
+
+	public void clientEditPower(int id, int power) {
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update appliances set power_status = "+power+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

@@ -1,6 +1,7 @@
 package models;
 
 import enumerations.ConnectionStatus;
+import utils.CommunicationControl;
 
 public class LogicBoard {
 
@@ -57,6 +58,26 @@ public class LogicBoard {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void checkConnection() {
+		
+		System.out.println("Testing Logic Board Connection to " + getAddress() + "...");
+		if(new CommunicationControl().testConnection(getAddress())) {
+			
+			System.out.println(getAddress() + " ONLINE");
+			this.connectionStatus = ConnectionStatus.ONLINE;
+			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.ONLINE);
+			
+		}
+		else {
+			
+			System.out.println(getAddress() + " OFFLINE");
+			this.connectionStatus = ConnectionStatus.OFFLINE;
+			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.OFFLINE);
+			
+		}
+		
 	}
 
 }

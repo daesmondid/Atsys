@@ -135,4 +135,22 @@ public class LogicBoard extends DaoBase {
 		
 	}
 	
+	public void updateConnection(int id, ConnectionStatus connectionStatus) {
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update logic_board set connection_status = "+AtsysDefaultUtil.getConnectionStatusMap().get(connectionStatus)+" where id = "+id;
+	    	statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
+	
 }

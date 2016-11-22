@@ -135,4 +135,22 @@ public class Lighting extends DaoBase {
 		
 	}
 	
+	public void clientEditIntensity(int id, int intensity) {
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update lighting set intensity = "+intensity+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
+	
 }

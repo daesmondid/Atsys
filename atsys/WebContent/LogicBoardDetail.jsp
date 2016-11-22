@@ -326,7 +326,14 @@
 														  <c:forEach items="${connectionStatusList}" var="connectionStatus">
 															  <c:choose>
 																  <c:when test="${fn:containsIgnoreCase(connectionStatus, requestScope.logicBoard.connectionStatus)}">
-																	  <td>${connectionStatus}</td>
+																	  <c:choose>
+																		  <c:when test="${connectionStatus == 'Online'}">
+																			  <td><span class="label label-success">${connectionStatus}</span></td>
+																		  </c:when>
+																		  <c:otherwise>
+																			  <td><span class="label label-default">${connectionStatus}</span></td>
+																		  </c:otherwise>
+																	  </c:choose>
 																  </c:when>
 															  </c:choose>
 												  		  </c:forEach>

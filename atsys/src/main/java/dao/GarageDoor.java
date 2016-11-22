@@ -136,5 +136,23 @@ public class GarageDoor extends DaoBase {
 		close();
 		
 	}
+
+	public void clientEditDoor(int id, int door) {
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update garage_door set door_status = "+door+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

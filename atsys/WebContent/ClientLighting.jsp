@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -65,42 +66,8 @@
 
 		<!-- Header
 		============================================= -->
-<<<<<<< HEAD
-		<%@include file="DefaultClientHead.jsp"%>
+		<%@include file="DefaultClientHead.jsp" %>
 		<!-- #header end -->
-=======
-		<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo.svg"><img src="images/logo.svg" alt="Canvas Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo.svg"><img src="images/logo.svg" alt="Canvas Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li><a href="index.html"><div>Setting</div></a></li>
-							<li><a href="Logout"><div>Logout</div></a></li>
-						</ul>
-
-					</nav><!-- #primary-menu end -->
-
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
 
 		<!-- Page Title
 		============================================= -->
@@ -110,32 +77,6 @@
 		============================================= -->
 		<section id="content">
 
-<<<<<<< HEAD
-		<div class="content-wrap nopadding">
-
-			<div class="section nomargin">
-
-				<div class="container clearfix">
-
-					<div class="row common-height clearfix">
-
-						<c:forEach items="${lightingList}" var="lighting" varStatus="loop">
-							<div class="col-md-4 col-sm-6 bottommargin-sm"
-								data-animate="fadeInRight"
-								data-delay="${500 + (200 * loop.index)}">
-								<div class="white-section">
-									<label><c:out value="${lighting.name}"></c:out></label> <span
-										class="label label-default"
-										style="position: absolute; right: 35px; top: 25px;">Offline</span>
-									<input class="range_${loop.index}" />
-									<div class="line nomargin" style="margin: 10px 0px !important;"></div>
-									<a href=""><i class="icon-settings2"
-										style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-									<a href=""><i class="icon-refresh"
-										style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-									<a href=""><i class="icon-chat-3"
-										style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-=======
 			<div class="content-wrap nopadding">
 
 				<div class="section nomargin">
@@ -144,19 +85,32 @@
 
 						<div class="row common-height clearfix">
 						
-							<c:forEach items="${list}" var="lighting" varStatus="loop">
-								<div class="col-md-4 col-sm-6 bottommargin-sm" data-animate="fadeInRight" data-delay="${500 + (200 * loop.index)}">
-									<div class="white-section">
-										<label><c:out value="${lighting.name}"></c:out></label>
-										<span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Offline</span>
-										<input class="range_${loop.index}" />
-										<div class="line nomargin" style="margin: 10px 0px !important;"></div>
-										<a href=""><i class="icon-settings2" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-										<a href=""><i class="icon-refresh" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-										<a href=""><i class="icon-chat-3" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-									</div>
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
-								</div>
+							<c:forEach items="${lightingList}" var="lighting" varStatus="loop">
+								<c:choose>
+									<c:when test="${lighting.logicBoard.user.id == requestScope.sessionUser.id}">
+										<div class="col-md-4 col-sm-6 bottommargin-sm" data-animate="fadeInRight" data-delay="${500 + (200 * loop.index)}">
+											<div class="white-section">
+												<label><c:out value="${lighting.name}"></c:out></label>
+												<c:choose>
+												  <c:when test="${lighting.logicBoard.connectionStatus == 'UNKNOWN'}">
+												    <span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Unknown</span>
+												  </c:when>
+												  <c:when test="${lighting.logicBoard.connectionStatus == 'OFFLINE'}">
+												    <span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Offline</span>
+												  </c:when>
+												  <c:when test="${lighting.logicBoard.connectionStatus == 'ONLINE'}">
+												    <span class="label label-success" style="position:absolute; right: 35px; top: 25px;">Online</span>
+												  </c:when>
+												</c:choose>
+												<input class="range_${loop.index}" />
+												<div class="line nomargin" style="margin: 10px 0px !important;"></div>
+												<a href=""><i class="icon-settings2" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
+												<a href=""><i class="icon-refresh" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
+												<a href=""><i class="icon-chat-3" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
+											</div>
+										</div>
+									</c:when>
+								</c:choose>
 							</c:forEach>
 
 						</div>
@@ -197,12 +151,23 @@
 
 		$(document).ready(function () {
 			
-			<c:forEach items="${list}" var="lighting" varStatus="loop">
+			<c:forEach items="${lightingList}" var="lighting" varStatus="loop">
 				$(".range_${loop.index}").ionRangeSlider({
 					min: 0,
 					max: 255,
 					from: <c:out value="${lighting.intensity}"></c:out>
 				});
+				
+				$(".range_${loop.index}").change(function(){
+					$.post("ClientLightingEditIntensityProcess",
+						    {
+						        id: "${lighting.id}",
+						        intensity: $(".range_${loop.index}").val()
+						    },
+						    function(data, status){
+						        //alert("Data: " + data + "\nStatus: " + status);
+						    });
+			    });
 			</c:forEach>
 
 		});

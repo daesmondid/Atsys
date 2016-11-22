@@ -1,8 +1,6 @@
-/servlets/
-/servletDevices/
-<<<<<<< HEAD
-/dao/
 /utils/
 /servletClient/
-=======
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
+/dao/
+/models/
+/servlets/
+/servletDevices/

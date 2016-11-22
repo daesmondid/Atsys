@@ -136,5 +136,23 @@ public class DoorLock extends DaoBase {
 		close();
 		
 	}
+
+	public void clientEditLock(int id, int lock) {
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update door_lock set lock_status = "+lock+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html dir="ltr" lang="en-US">
@@ -65,42 +66,8 @@
 
 		<!-- Header
 		============================================= -->
-<<<<<<< HEAD
-		<%@include file="DefaultClientHead.jsp"%>
+		<%@include file="DefaultClientHead.jsp" %>
 		<!-- #header end -->
-=======
-		<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
-
-			<div id="header-wrap">
-
-				<div class="container clearfix">
-
-					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-					<!-- Logo
-					============================================= -->
-					<div id="logo">
-						<a href="index.html" class="standard-logo" data-dark-logo="images/logo.svg"><img src="images/logo.svg" alt="Canvas Logo"></a>
-						<a href="index.html" class="retina-logo" data-dark-logo="images/logo.svg"><img src="images/logo.svg" alt="Canvas Logo"></a>
-					</div><!-- #logo end -->
-
-					<!-- Primary Navigation
-					============================================= -->
-					<nav id="primary-menu">
-
-						<ul>
-							<li><a href="index.html"><div>Setting</div></a></li>
-							<li><a href="Logout"><div>Logout</div></a></li>
-						</ul>
-
-					</nav><!-- #primary-menu end -->
-
-				</div>
-
-			</div>
-
-		</header><!-- #header end -->
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
 
 		<!-- Page Title
 		============================================= -->
@@ -116,71 +83,58 @@
 
 					<div class="container clearfix">
 
-<<<<<<< HEAD
-					<div class="row common-height clearfix">
-
-						<c:forEach items="${garageDoorList}" var="garageDoor" varStatus="loop">
-
-							<div class="col-md-4 col-sm-6 bottommargin-sm"
-								data-animate="fadeInRight"
-								data-delay="${500 + (200 * loop.index)}">
-								<div class="white-section">
-									<label><c:out value="${garageDoor.name}"></c:out></label> <span
-										class="label label-default"
-										style="position: absolute; right: 35px; top: 25px;">Offline</span>
-									<center>
-
-										<c:choose>
-											<c:when test="${garageDoor.doorStatus == 0}">
-												<h2>Closed</h2>
-											</c:when>
-											<c:when test="${garageDoor.doorStatus == 1}">
-												<h2 style="color: red;">Open</h2>
-											</c:when>
-										</c:choose>
-
-										<div class="switch">
-											<input id="switch-toggle-${loop.index}"
-												class="switch-toggle switch-flat switch-toggle-flat"
-												type="checkbox"
-=======
 						<div class="row common-height clearfix">
 						
-							<c:forEach items="${list}" var="garageDoor" varStatus="loop">
-								
-								<div class="col-md-4 col-sm-6 bottommargin-sm" data-animate="fadeInRight" data-delay="${500 + (200 * loop.index)}">
-									<div class="white-section">
-										<label><c:out value="${garageDoor.name}"></c:out></label>
-										<span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Offline</span>
-										<center>
-											
+							<c:forEach items="${garageDoorList}" var="garageDoor" varStatus="loop">
+								<c:choose>
+									<c:when test="${garageDoor.logicBoard.user.id == requestScope.sessionUser.id}">
+										<div class="col-md-4 col-sm-6 bottommargin-sm" data-animate="fadeInRight" data-delay="${500 + (200 * loop.index)}">
+											<div class="white-section">
+												<label><c:out value="${garageDoor.name}"></c:out></label>
 												<c:choose>
-												  <c:when test="${garageDoor.doorStatus == 0}">
-												    <h2>Closed</h2>
+												  <c:when test="${garageDoor.logicBoard.connectionStatus == 'UNKNOWN'}">
+												    <span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Unknown</span>
 												  </c:when>
-												  <c:when test="${garageDoor.doorStatus == 1}">
-												    <h2 style="color: red;">Open</h2>
+												  <c:when test="${garageDoor.logicBoard.connectionStatus == 'OFFLINE'}">
+												    <span class="label label-default" style="position:absolute; right: 35px; top: 25px;">Offline</span>
+												  </c:when>
+												  <c:when test="${garageDoor.logicBoard.connectionStatus == 'ONLINE'}">
+												    <span class="label label-success" style="position:absolute; right: 35px; top: 25px;">Online</span>
 												  </c:when>
 												</c:choose>
-											
-											<div class="switch" >
-												<input id="switch-toggle-${loop.index}" class="switch-toggle switch-flat switch-toggle-flat" type="checkbox"
->>>>>>> parent of 5debfc1... Formatted Web Content Folder
-												<c:choose>
-												  <c:when test="${garageDoor.doorStatus == 1}">
-												    checked
-												  </c:when>
-												</c:choose>
-												>
-												<label for="switch-toggle-${loop.index}"></label>
+												<center>
+													
+														<c:choose>
+														  <c:when test="${garageDoor.doorStatus == 'UNKNOWN'}">
+														    <h2 id="switch-label-${loop.index}">Unknown</h2>
+														  </c:when>
+														  <c:when test="${garageDoor.doorStatus == 'CLOSED'}">
+														    <h2 id="switch-label-${loop.index}">Closed</h2>
+														  </c:when>
+														  <c:when test="${garageDoor.doorStatus == 'OPEN'}">
+														    <h2 id="switch-label-${loop.index}"><span style="color: red;">Open</span></h2>
+														  </c:when>
+														</c:choose>
+													
+													<div class="switch" >
+														<input id="switch-toggle-${loop.index}" class="switch-toggle switch-flat switch-toggle-flat" type="checkbox"
+														<c:choose>
+														  <c:when test="${garageDoor.doorStatus == 'OPEN'}">
+														    checked
+														  </c:when>
+														</c:choose>
+														>
+														<label for="switch-toggle-${loop.index}"></label>
+													</div>
+												</center>
+												<div class="line nomargin" style="margin: 10px 0px !important;"></div>
+												<a href=""><i class="icon-settings2" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
+												<a href=""><i class="icon-refresh" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
+												<a href=""><i class="icon-chat-3" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
 											</div>
-										</center>
-										<div class="line nomargin" style="margin: 10px 0px !important;"></div>
-										<a href=""><i class="icon-settings2" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-										<a href=""><i class="icon-refresh" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-										<a href=""><i class="icon-chat-3" style="font-size: 17px; line-height: 17px; margin-right: 10px;"></i></a>
-									</div>
-								</div>
+										</div>
+									</c:when>
+								</c:choose>
 							</c:forEach>
 
 						</div>
@@ -215,6 +169,40 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			
+			<c:forEach items="${garageDoorList}" var="garageDoor" varStatus="loop">
+				$("#switch-toggle-${loop.index}").change(function(){
+					if (this.checked) {
+						$.post("ClientGarageDoorEditDoorProcess",
+							    {
+							        id: "${garageDoor.id}",
+							        door: 2
+							    },
+							    function(data, status){
+							        //alert("Data: " + data + "\nStatus: " + status);
+							    }); 
+						$("#switch-label-${loop.index}").html("<span style=\"color: red;\">Open</span>");
+				    } else {
+				    	$.post("ClientGarageDoorEditDoorProcess",
+							    {
+							        id: "${garageDoor.id}",
+							        door: 3
+							    },
+							    function(data, status){
+							        //alert("Data: " + data + "\nStatus: " + status);
+							    });
+				    	$("#switch-label-${loop.index}").html("Closed");
+				    }
+			    });
+			</c:forEach>
+
+		});
+
+	</script>
 	
 	<script>
 

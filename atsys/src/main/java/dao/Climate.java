@@ -139,5 +139,41 @@ public class Climate extends DaoBase {
 		close();
 		
 	}
+
+	public void clientEditPower(int id, int power) {
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update climate set power_status = "+power+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
+
+	public void clientEditTemperature(int id, int temperature) {
+
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update climate set temperature = "+temperature+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
 	
 }

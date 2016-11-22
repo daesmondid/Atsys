@@ -141,4 +141,40 @@ public class AudioSystem extends DaoBase {
 		
 	}
 	
+	public void clientEditVolume(int id, int volume) {
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update audio_system set volume_level = "+volume+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
+
+	public void clientEditPower(int id, int power) {
+		
+		try {
+			
+			statement = connect.createStatement();
+			String query = "update audio_system set power_status = "+power+" where id = "+id;
+			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		close();
+		
+	}
+	
 }

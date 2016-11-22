@@ -44,6 +44,8 @@ public class ClimateDetail extends HttpServlet {
 		String identity = request.getParameter("id");
 		int id = Integer.parseInt(identity);
 		
+		new dao.LogicBoard().get(new dao.Climate().get(id).getLogicBoard().getId()).checkConnection();
+		
 		request.setAttribute("connectionStatusList", AtsysDefaultUtil.getStringConnectionStatusMap().keySet());
 		request.setAttribute("ticketStatusList", AtsysDefaultUtil.getStringTicketStatusMap().keySet());
 		request.setAttribute("logicBoardList", new dao.LogicBoard().list());
