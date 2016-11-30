@@ -62,17 +62,33 @@ public class LogicBoard {
 	
 	public void checkConnection() {
 		
-		System.out.println("Testing Logic Board Connection to " + getAddress() + "...");
-		if(new CommunicationControl().testConnection(getAddress())) {
+//		System.out.println("Testing Logic Board Connection to " + getAddress() + "...");
+//		if(CommunicationControl.testConnection(getAddress())) {
+//			
+//			System.out.println(getAddress() + " ONLINE");
+//			this.connectionStatus = ConnectionStatus.ONLINE;
+//			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.ONLINE);
+//			
+//		}
+//		else {
+//			
+//			System.out.println(getAddress() + " OFFLINE");
+//			this.connectionStatus = ConnectionStatus.OFFLINE;
+//			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.OFFLINE);
+//			
+//		}
+		
+		System.out.println("Testing Logic Board Connection with ID " + getId() + "...");
+		if(CommunicationControl.testConnection(getId())) {
 			
-			System.out.println(getAddress() + " ONLINE");
+			System.out.println(getId() + " ONLINE");
 			this.connectionStatus = ConnectionStatus.ONLINE;
 			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.ONLINE);
 			
 		}
 		else {
 			
-			System.out.println(getAddress() + " OFFLINE");
+			System.out.println(getId() + " OFFLINE");
 			this.connectionStatus = ConnectionStatus.OFFLINE;
 			new dao.LogicBoard().updateConnection(getId(), ConnectionStatus.OFFLINE);
 			

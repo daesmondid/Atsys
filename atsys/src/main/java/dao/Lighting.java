@@ -3,6 +3,8 @@ package dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import models.LogicBoard;
+import utils.CommunicationControl;
 import utils.DaoBase;
 
 public class Lighting extends DaoBase {
@@ -142,6 +144,8 @@ public class Lighting extends DaoBase {
 			statement = connect.createStatement();
 			String query = "update lighting set intensity = "+intensity+" where id = "+id;
 			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+			CommunicationControl.message(new dao.Lighting().get(id).getLogicBoard().getId(), ":LIGHT:" + id + ":" + intensity);
 			
 		}
 		catch (SQLException e) {

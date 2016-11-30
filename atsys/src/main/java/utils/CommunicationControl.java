@@ -1,27 +1,13 @@
 package utils;
 
-import java.io.DataOutputStream;
 import java.net.InetAddress;
-import java.net.Socket;
+import java.util.ArrayList;
 
-public class CommunicationControl {
+public final class CommunicationControl {
 
-	public CommunicationControl() {
-		
-		
-		
-	}
+	public static ArrayList<MultiThreadServer> boardConnections = new ArrayList<MultiThreadServer>();
 	
-	public void send(String input, String ip) throws Exception {
-		
-		Socket clientSocket = new Socket(ip, 23);
-		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-		outToServer.writeBytes(input);
-		clientSocket.close();
-		
-	}
-	
-	public boolean testConnection(String ipAddress) {
+	public static boolean testConnection(String ipAddress) {
 		
 		boolean result = false;
 		
@@ -36,6 +22,39 @@ public class CommunicationControl {
 		}
 		
 		return result;
+		
+	}
+	
+	public static boolean testConnection(int boardId) {
+		
+		boolean result = false;
+		
+		for (MultiThreadServer multiThreadServer : boardConnections) {
+			
+			if (multiThreadServer.getBoardId().equals(String.valueOf(boardId))) {
+				
+				result = true;
+				break;
+				
+			}
+			
+		}
+		
+		return result;
+		
+	}
+	
+	public static void message(int boardId, String message) {
+		
+		for (MultiThreadServer multiThreadServer : boardConnections) {
+			
+			if (multiThreadServer.getBoardId().equals(String.valueOf(boardId))) {
+				
+				multiThreadServer.send(message);
+				
+			}
+			
+		}
 		
 	}
 	

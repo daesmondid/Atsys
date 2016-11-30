@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import enumerations.LockStatus;
 import utils.AtsysDefaultUtil;
+import utils.CommunicationControl;
 import utils.DaoBase;
 
 public class DoorLock extends DaoBase {
@@ -144,6 +145,8 @@ public class DoorLock extends DaoBase {
 			statement = connect.createStatement();
 			String query = "update door_lock set lock_status = "+lock+" where id = "+id;
 			statement.executeUpdate(query.replaceAll("'", "\""));
+			
+			CommunicationControl.message(new dao.DoorLock().get(id).getLogicBoard().getId(), ":DOORLOCK:" + id + ":" + lock);
 			
 		}
 		catch (SQLException e) {
